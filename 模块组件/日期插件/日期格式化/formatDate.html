@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>formatDate</title>
+</head>
+<body>
+	<script>
+		// 将日期前缀加上0
+		var formatDate = function(ymd) {
+		    return ymd.replace(/(\d{4})\-(\d{1,2})\-(\d{1,2})/g, function(ymdFormatDate, y, m, d){
+		    	m = parseInt(m);
+		    	d = parseInt(d);
+
+		        if(m < 10){
+		            m = '0' + m;
+		        }
+		        if(d < 10){
+		            d = '0' + d;
+		        }
+		        return y + '-' + m + '-' + d;
+		    });
+		};
+		formatDate('2017-6-20');
+
+
+		// 将2017-6-20转化成毫秒
+		var str = '2017-6-20';
+		var endTimeStr1 = new Date(new Date(Date.parse(str.replace(/-/g,  "/"))).getTime()+86400000);
+		var endTime1 = formatDate(endTimeStr.getFullYear()+'-'+(endTimeStr.getMonth()+1)+'-'+(endTimeStr.getDate()));
+		console.log(new Date("2009/1/1")); 
+		
+
+		// 获取今天日期和后一天的日期，转成毫秒计算
+		var today  = new Date();
+		var startTime = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate(); 
+
+		var endTimeStr = new Date(today.getTime()+86400000); 
+		var endTime = endTimeStr.getFullYear()+'-'+(endTimeStr.getMonth()+1)+'-'+(endTimeStr.getDate());
+	</script>
+</body>
+</html>

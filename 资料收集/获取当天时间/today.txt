@@ -1,0 +1,2 @@
+var today  = new Date();
+var startTime = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate(); 

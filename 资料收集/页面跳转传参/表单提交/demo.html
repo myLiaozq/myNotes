@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>表单序列化</title>
+		<style>
+			body,div,dl,dt,
+			dd,
+			ul,
+			ol,
+			li,
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6,
+			pre,
+			form,
+			fieldset,
+			input,
+			textarea,
+			p,
+			blockquote,
+			th,
+			td {
+				padding: 0;
+				margin: 0;
+			}
+			
+			table {
+				border-collapse: collapse;
+				border-spacing: 0;
+			}
+			
+			fieldset,
+			img {
+				border: 0;
+			}
+			
+			address,
+			caption,
+			cite,
+			code,
+			dfn,
+			em,
+			strong,
+			th,
+			var {
+				font-weight: normal;
+				font-style: normal;
+			}
+			
+			ol,
+			ul {
+				list-style: none;
+			}
+			
+			caption,
+			th {
+				text-align: left;
+			}
+			
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				font-weight: normal;
+				font-size: 100%;
+			}
+			
+			q:before,
+			q:after {
+				content: ”;
+			}
+			
+			abbr,
+			acronym {
+				border: 0;
+			}
+			
+			.form-div {
+				height: 3rem;
+				line-height: 3rem;
+				padding: 0 1rem;
+			}
+			
+			#form1 {
+				width: 20rem;
+				margin: 5rem auto;
+				border: 1px solid #ddd;
+			}
+			
+			.btn {
+				display: inline-block;
+				width: 4rem;
+				height: 2rem;
+				line-height: 2rem;
+				text-align: center;
+				border: 0;
+				border-radius: 3px;
+				background-color: #e71e1e;
+				color: #fff;
+				margin-left: 1rem;
+			}
+			
+			#box {
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<form id="form1" action="demo2.html" target="_blank">
+			<div class="form-div" style="display: none;">
+				<label for="name">姓名：</label>
+				<input type="text" id="name" name="name">
+			</div>
+			<div class="form-div">
+				<label for="age">年龄：</label>
+				<input type="number" id="age" name="age">
+			</div>
+			<div class="form-div">
+				<label>性别：</label>
+				<input type="radio" name="sex" value="1">男
+				<input type="radio" name="sex" value="2">女
+			</div>
+			<div class="form-div">
+				<buttom id="s1" class="btn">提交1</buttom>
+				<buttom id="s2" class="btn">提交2</buttom>
+				<buttom id="s3" class="btn">提交3</buttom>
+			</div>
+		</form>
+		<div id="box"></div>
+
+	</body>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+	<script>
+		bindSubmit();
+
+		function bindSubmit() {
+			$(".btn").on("click", function(e) {
+				var id = e.target.getAttribute("id");
+				var data1 = $("#form1").serialize();
+				var data2 = $("#form1").serializeArray();
+				var data3 = getJsonStr("#form1");
+				switch(id) {
+					case "s1":
+						$("#box").html(data1);
+						$("#form1").submit();
+						break;
+					case "s2":
+						$("#box").html(JSON.stringify(data2));
+						break;
+
+					case "s3":
+						$("#box").html(JSON.stringify(data3));
+						// window.location.target="_blank";
+						// window.location.href="demo2.html";
+						window.open("demo2.html?"+data1+"");
+						break;
+					default:
+						break;
+				}
+			});
+		}
+
+		function getJsonStr(formId) {
+			var obj = {};
+			var arr = $(formId).serializeArray();
+			for(var i = 0; i < arr.length; i++) {
+				var name = arr[i].name;
+				var value = arr[i].value;
+				obj[name] = value;
+			}
+			return obj;
+		}
+	</script>
+
+</html>

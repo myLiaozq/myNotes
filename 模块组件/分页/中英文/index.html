@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>page</title>
+	<style type="text/css">
+		.p-comment-page {
+		  padding: 80px 100px 256px;
+		  font-size: 18px;
+		  overflow: hidden;
+		  text-align: center;
+		  clear: both;
+		}
+		.p-comment-page .prevPage {
+		  float: left;
+		  margin: 0 15px;
+		}
+		.p-comment-page .nextPage {
+		  float: right;
+		  margin: 0 15px;
+		}
+		.p-comment-page .current {
+		  color: #8ec060;
+		  margin: 0 15px;
+		}
+		.p-comment-page > a {
+		  margin: 0 15px;
+		  font-size: 18px;
+		  color: #1f2c5c;
+		}
+		.p-comment-page > a:hover {
+		  color: #8ec060;
+		}
+		.p-comment-page .disabled {
+		  color: #ccc;
+		  margin: 0 15px;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="p-comment-page"></div>
+	<script type="text/javascript" src="jquery-1.11.3.js"></script>
+	<script type="text/javascript" src="jqueryPage.js"></script>
+	<script type="text/javascript">
+		//分页调用
+		$(".p-comment-page").createPage({
+		    pageCount:10,
+		    current:1,
+		    previous:'Previous',
+		    next:'Next',
+		    backFn:function(p){
+		        // console.log(p);
+		    }
+		});
+	</script>
+</body>
+</html>

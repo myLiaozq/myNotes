@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>picker</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css">
+	<style type="text/css">
+		body{
+			background: #364666;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" value="" id="datetimepicker" readonly>
+	<script type="text/javascript" src="jQuery/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap-datetimepicker.zh-CN.js"></script>
+	<script type="text/javascript">
+		$('#datetimepicker').datetimepicker({
+			language:  'zh-CN',
+			format: 'yyyy-mm-dd hh:ii'
+		});
+	</script>
+</body>
+</html>

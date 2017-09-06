@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>data</title>
+	<link rel="stylesheet" type="text/css" href="dataRange/lanmei-calendar.css">
+</head>
+<body>
+	单日期选择：<input type="text" name="" id="data1">
+	<br><br><br>
+	开始日期：<input type="text" name="" id="data2">
+	结束日期：<input type="text" name="" id="data3">
+
+	<script type="text/javascript" src="jQuery/jquery-1.11.3.js"></script>
+	<script type="text/javascript" src="dataRange/lanmei-calendar.js"></script>
+	<script type="text/javascript" src="dataRange/lanmei-date-select.js"></script>
+	<script type="text/javascript">
+		$('#data1').dateSelect({
+			timeFrom: 'data1',
+			isSingleDay:true,
+			count:1,
+		});
+
+		$('#data1').dateSelect({
+			timeFrom: 'data2',
+			timeTo: 'data3',
+		});
+	</script>
+</body>
+</html>

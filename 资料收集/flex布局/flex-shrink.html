@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+<style>
+#main {
+    width: 350px;
+    height: 100px;
+    border: 1px solid #c3c3c3;
+    display: -webkit-flex; /* Safari */
+    display: flex;
+}
+
+#main div {
+    -webkit-flex-grow: 1; /* Safari 6.1+ */
+    -webkit-flex-shrink: 1; /* Safari 6.1+ */
+    -webkit-flex-basis: 100px; /* Safari 6.1+ */
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 100px;
+}
+
+#main div:nth-of-type(2) {
+    -webkit-flex-shrink: 3; /* Safari 6.1+ */
+    flex-shrink: 3;
+}
+</style>
+</head>
+<body>
+
+<div id="main">
+  <div style="background-color:coral;"></div>
+  <div style="background-color:lightblue;"></div>
+  <div style="background-color:khaki;"></div>
+  <div style="background-color:pink;"></div>
+  <div style="background-color:lightgrey;"></div>
+</div>
+
+<p><b>注意:</b> Internet Explorer 10 及更早版本浏览器不支持 flex-shrink 属性。</p>
+<p><b>注意:</b> Safari 6.1 及更新版本通过 -webkit-flex-shrink 属性支持该属性。</p>
+
+</body>
+</html>

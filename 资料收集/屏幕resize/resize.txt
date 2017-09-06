@@ -1,0 +1,9 @@
+        var _m_tick = null;
+	$(window).resize(function(){
+		if (_m_tick) clearTimeout(_m_tick);
+	    _m_tick = setTimeout(function() {
+	    	var screenWidth = $(window).width();
+	    	var left = (screenWidth - 320)/2-300;
+	    	$('.swiper-container').css('left',left);
+            }, 1000);
+	});

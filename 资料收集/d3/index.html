@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>d3之select选择器方法</title>
+    <script src="node_modules/d3/build/d3.min.js"></script>
+    <style>
+        .header {
+            font-size: 14px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <p>
+            68kejian.com1
+        </p>
+    </div>
+    <div>
+        68kejian.com2
+    </div>
+    <div>
+        68kejian.com3
+    </div>
+    <script>
+        //1、select标签选择器,select返回第一个匹配的标签，如果没有匹配的返回空
+        var container = d3.select('div');
+        console.log(container.text()); //返回内容，去除了标签
+        //2、select通过id选择标签
+        container = d3.select('div#header');
+        console.log(container.html()); //返回内容，包含html标签
+        //3、class选择器,.classed 方法，该方法可以让你对元素的类进行操作
+        var isHasHeader = d3.select('div').classed('header'); //判断是否包含header类
+        console.log(isHasHeader);
+        container.classed('go', true); //添加go类
+        container.classed('header', function() {
+            return false;
+        }); //删除header类
+        alert(d3.select('div p').html());
+    </script>
+</body>
+</html>

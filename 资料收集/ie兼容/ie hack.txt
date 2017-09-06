@@ -1,0 +1,68 @@
+IE10及以上：
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+	/* IE10+ CSS styles go here */
+	img{border:none !important;}
+}
+
+
+IE10以下的：
+
+<!--[if !IE]><!--> 除IE外都可识别 <!--<![endif]-->
+<!--[if IE]> 所有的IE可识别 <![endif]-->
+<!--[if IE 6]> 仅IE6可识别 <![endif]-->
+<!--[if lt IE 6]> IE6以及IE6以下版本可识别 <![endif]-->
+<!--[if gte IE 6]> IE6以及IE6以上版本可识别 <![endif]-->
+<!--[if IE 7]> 仅IE7可识别 <![endif]-->
+<!--[if lt IE 7]> IE7以及IE7以下版本可识别 <![endif]-->
+<!--[if gte IE 7]> IE7以及IE7以上版本可识别 <![endif]-->
+<!--[if IE 8]> 仅IE8可识别 <![endif]-->
+<!--[if IE 9]> 仅IE9可识别 <![endif]-->
+
+
+<!DOCTYPE html>
+<!--[if IE 6 ]> <html class="ie6 lte_ie6 lte_ie7 lte_ie8" lang="zh-CN"> <![endif]-->
+<!--[if lte IE 6 ]> <html class="lte_ie6 lte_ie7 lte_ie8" lang="zh-CN"> <![endif]-->
+<!--[if lte IE 7 ]> <html class="lte_ie7 lte_ie8" lang="zh-CN"> <![endif]-->
+<!--[if lte IE 8 ]> <html class="lte_ie8" lang="zh-CN"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="zh-CN"><!--<![endif]-->
+
+
+hack	示例	IE6(S)	IE6(Q)	IE7(S)	IE7(Q)	IE8(S)	IE8(Q)
+*	*color	Yes	Yes	Yes	Yes	No	Yes
++	+color	Yes	Yes	Yes	Yes	No	Yes
+-	-color	Yes	Yes	No	No	No	No
+_	_color	Yes	Yes	No	Yes	No	Yes
+#	#color	Yes	Yes	Yes	Yes	No	Yes
+\0	color\0	No	No	No	No	Yes	No
+\9	color\9	Yes	Yes	Yes	Yes	Yes	Yes
+!important	color:blue !important;
+color:green;	No	No	Yes	No	Yes	No
+
+
+// ie兼容性判断
+var browser=navigator.appName; 
+var b_version=navigator.appVersion; 
+var version=b_version.split(";"); 
+var trim_Version=version[1].replace(/[ ]/g,""); 
+if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE6.0"){ 
+	alert("IE 6.0"); 
+}else if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE7.0"){ 
+	alert("IE 7.0"); 
+}else if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE8.0"){ 
+	alert("IE 8.0"); 
+}else if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE9.0"){ 
+	alert("IE 9.0"); 
+} 
+
+
+
+if (document.all && document.addEventListener && !window.atob) {
+	// alert('IE9');
+	$(this).siblings('.clear').hide();
+}else if (document.all && document.querySelector && !document.addEventListener) {
+	// alert('IE8');
+	$(this).siblings('.clear').hide();
+}else{
+	$(this).siblings('.clear').show();
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul,li,div{padding:0;margin:0;list-style:none;}
+        .c1{background:green;}
+        .symbol {
+            border: 6px solid transparent;
+            border-top: 6px solid #aaa;
+            display: inline-block;
+            position:relative;top:3px;left:-20px;
+        }
+        #where{padding-right:15px;}
+    </style>
+</head>
+<body>
+    <input type="text" id="where" name="where" style="width:100px"placeholder="请输入或选择"><i class="symbol"></i>
+    <ul style="display:none">
+        <li><label><input type="Checkbox" >你是我们</label></li>
+        <li><label><input type="Checkbox" >你是在</label></li>
+        <li><label><input type="Checkbox" >你是炸弹人</label></li>
+        <li><label><input type="Checkbox" >你是孙菲菲</label></li>
+        <li><label><input type="Checkbox" >你是消费地方</label></li>
+        <li><label><input type="Checkbox" >你是收费方式</label></li>
+    </ul>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    //封装插件
+    ;(function($,window) {
+        var pluginName = "selectMore";
+        var defaults = {inputId: ''};
+        function Plugin(element, options) {
+            this.element = element;
+            this.options = $.extend({}, defaults, options);
+            this._defaults = defaults;
+            this._name = pluginName;
+            this.init();
+        }
+        Plugin.prototype.init = function () {
+            var $element = $(this.element);
+            var $ulId = $(this.options.inputId);
+            $ulId.on('click', 'li', function (e) {
+                e.stopPropagation();
+                var $this = $(this);
+                var li_value = $this.find("label");
+                var inputs = $this.find("label").children("input");
+                if (inputs.is(':checked')) {
+                    li_value.addClass("c1");
+                    if ($element.val().length > 0)$element.val($element.val() + "," + li_value.text());
+                    else $element.val($element.val() + li_value.text());
+                }
+                else{
+                    li_value.removeClass("c1");
+                    if($element.val().indexOf("," + li_value.text()+ ",") != -1){
+                        $element.val($element.val().replace("," +li_value.text(),''));
+                    }
+                    else if($element.val().indexOf("," + li_value.text()) != -1){
+                        $element.val($element.val().replace("," +li_value.text(),''));
+                    }
+                    else if($element.val().indexOf(li_value.text()+ ",") != -1){
+                        $element.val($element.val().replace(li_value.text()+ ",",''));
+                    }
+                    else if($element.val().indexOf(li_value.text())!= -1){
+                        $element.val($element.val().replace(li_value.text(),''));
+                    }
+                }
+            });
+            $element.bind("keyup click",function(e){
+                if (event.stopPropagation) {
+              event.stopPropagation(); }
+                else {
+                  event.cancelBubble = true; }
+                if($ulId.hide())$ulId.show();
+                else{$ulId.hide();}
+                var left = $(this).offset().left;
+                var top = $(this).offset().top + $(this).height()+3;
+                $ulId.attr("style", "position:absolute;zindex:99999;left:" + left + "px;top:" + top + "px;width:" + ($(this).width() + 5) + "px;display:block;");
+                $ulId.find("li").hide().filter(":contains('"+($(this).val().toUpperCase() )+"')").show();
+            });
+            $(document).click(function(){
+                $ulId.hide();
+            })
+        }
+        $.fn[pluginName] = function (options) {
+            return this.each(function () {
+                if (!$.data(this, 'plugin_' + pluginName)) {
+                    $.data(this, 'plugin_' + pluginName, new Plugin(this, options));
+                }
+            });
+        }
+    })(jQuery);
+$('#where').selectMore({inputId :'ul'});
+</script>
+</body>
+</html>

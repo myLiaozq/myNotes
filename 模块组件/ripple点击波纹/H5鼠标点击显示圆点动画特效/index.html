@@ -1,0 +1,73 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>HTML5鼠标点击显示圆点动画特效</title>
+
+<style>
+body {
+    background: #F8F4E3;
+}
+
+.message {
+    position: fixed;
+    width: 80%;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+    font-size: 1.2rem;
+    font-family: 'Baloo Bhaina', cursive;
+    color: #706C61;
+}
+</style>
+</head>
+<body>
+
+<script src="js/mo.min.js"></script>
+<script src="js/mojs-player.min.js"></script>
+
+<div class="message">点击任何地方看效果</div>
+
+<script>
+'use strict';
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) {if (window.CP.shouldStopExecution(2)){break;} var source = arguments[i]; for (var key in source) {if (window.CP.shouldStopExecution(1)){break;} if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } }
+window.CP.exitedLoop(1);
+ }
+window.CP.exitedLoop(2);
+ return target; };
+
+var OPTS = {
+    fill: 'none',
+    radius: 25,
+    strokeWidth: { 50: 0 },
+    scale: { 0: 1 },
+    angle: { 'rand(-35, -70)': 0 },
+    duration: 500,
+    left: 0,
+    top: 0,
+    easing: 'cubic.out'
+};
+
+var circle1 = new mojs.Shape(_extends({}, OPTS, {
+    stroke: '#FF8966'
+}));
+
+var circle2 = new mojs.Shape(_extends({}, OPTS, {
+    radius: { 0: 15 },
+    strokeWidth: { 30: 0 },
+    stroke: '#E5446D',
+    delay: 'rand(75, 150)'
+}));
+
+document.addEventListener('click', function (e) {
+    circle1.tune({ x: e.pageX, y: e.pageY }).replay();
+
+    circle2.tune({ x: e.pageX, y: e.pageY }).replay();
+});
+</script>
+</body>
+</html>
+

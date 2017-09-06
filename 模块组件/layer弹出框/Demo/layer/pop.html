@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#form{
+			padding:20px 50px;
+			border-radius: 5px;
+			font-family: "微软雅黑";
+		}
+		.layui-layer-title{
+			height: 50px;
+			line-height: 50px;
+		}
+		.form-group{
+			padding:12px 15px;
+		}
+		select{
+			width:350px;
+			height:35px;
+			border: solid 1px #a0a0a0;
+			appearance:none;
+			-moz-appearance:none;
+			-webkit-appearance:none;
+			background: url("images/arrow.png") no-repeat scroll right center transparent;
+			padding-right: 27px;
+			padding-left:10px;
+		}
+		select::-ms-expand { display: none; }
+		label{
+			display: inline-block;
+			width:80px;
+			height:35px;
+			line-height: 35px;
+		}
+		button{
+			background: #8CC51C;
+			width:90px;
+			height:40px;
+			color:#FFF;
+			border:none;
+			border-radius: 4px;
+			margin-right:10px;
+			font-size:12pt;
+		}
+	</style>
+	<script src="jquery-1.11.3.js"></script>
+</head>
+<body>
+	<form id="form">
+		<div class="form-group">
+		    <label>选择地区：</label>
+		    <select>
+		    	<option>越秀区</option>
+		    	<option>海珠区</option>
+		    	<option>天河区</option>
+		    	<option>番禺区</option>
+		    	<option>花都区</option>
+		    </select>
+		</div>
+		<div class="form-group">
+		    <label>IP地址：</label>
+		    <select>
+		    	<option>192.168.0.1</option>
+		    	<option>192.168.0.1</option>
+		    	<option>192.168.0.1</option>
+		    	<option>192.168.0.1</option>
+		    </select>
+		</div>
+		<div class="form-group">
+		    <label>用户名称：</label>
+		    <select>
+		    	<option>liaozq</option>
+		    	<option>sharon</option>
+		    	<option>hexiaolang</option>
+		    	<option>tom</option>
+		    </select>
+		</div>
+		<div class="form-group">
+			<label></label>
+			<button class="closebtn">确定</button>
+			<button class="closebtn">取消</button>
+		</div>
+	</form>
+	
+	<script type="text/javascript">
+		$("select").focus(function(){
+			console.log(111);
+			$(this).css("outline-color","#8fc31f");
+		});
+
+	</script>
+</body>
+</html>

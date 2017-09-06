@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>domain</title>
+</head>
+<body>
+	<h1 class="h1">这是B页面</h1>
+	<script type="text/javascript" src="jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+		document.domain = '192.168.1.19';//在iframe载入这个页面也设置document.domain，使之与主页面的document.domain
+	</script>
+</body>
+</html>

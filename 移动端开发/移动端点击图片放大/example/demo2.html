@@ -1,0 +1,37 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <style>
+        html { font-size: 100px; font-size: calc(100vw/3.2); -webkit-tap-highlight-color: transparent; }
+        body { font-size: .14rem; }
+        body { background: #f5f5f5; padding: 0; margin: 0; color: #333; }
+        .titlebar { background: #fff; line-height: .18rem; padding: .12rem 0; text-align: center; font-size: .15rem; box-shadow: 0 .01rem .02rem rgba(0,0,0,.15);}
+        .viewbtn { margin: .2rem .1rem 0; background: #fff; text-align: center; line-height: .16rem; padding: .1rem;border-radius:.05rem; box-shadow: 0 .02rem .02rem rgba(0,0,0,.15); }
+        .viewbtn:active { box-shadow: 0 .01rem .01rem rgba(0,0,0,.15); transform: translateY(.01rem); -webkit-transform: translateY(.01rem); }
+    </style>
+</head>
+<body>
+    <div class="titlebar">使用图片路径浏览</div>
+    <div class="viewbtn" id="ViewBtn">点击浏览</div>
+    <script src="../src/ImageView-1.0.3.js"></script>
+    <script>
+        var ViewBtn = document.querySelector('#ViewBtn');
+        ViewBtn.addEventListener('click', function () {
+            ImageView.show({
+                pattern: 'default',
+                selector: [
+                    'img/014IR151-5.jpg',
+                    'img/66R58PICKvP_1024.jpg',
+                    'img/sfe4r5sf54s5fs45df.jpg',
+                    'img/730e0cf3d7cdfsdfsdfsd342sdf.jpg',
+                    'img/dsa32f4654sd5f48sdf45s.jpg',
+                    'img/dsa32f465as4fs2f1s54f5s4f.jpg',
+                    'img/dsa32f46sf5s4f5s54fsdf.jpg'
+                ]
+            });
+        });
+    </script>
+</body>
+</html>

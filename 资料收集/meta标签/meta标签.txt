@@ -1,0 +1,145 @@
+<meta http-equiv="X-UA-Compatible" content="IE=7">  Meta标签默认使用IE7宣染
+
+360浏览器内核控制Meta标签
+
+若页面需默认用ie兼容内核，增加标签：<meta name=”renderer” content=”ie-comp”>
+若页面需默认用ie标准内核，增加标签：<meta name=”renderer” content=”ie-stand”>
+
+若页面需默认用极速核，增加标签：<meta name="renderer" content="webkit"> 
+
+对于一些比较旧版的网站，建议使用以下标签：
+<meta name="renderer" content="ie-comp">
+<meta name="renderer" content="ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+
+
+
+  <!-- 优先使用 IE 最新版本和 Chrome -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+
+
+<meta name="Robots" contect= "all|none|index|noindex|follow|nofollow">
+　　其中的属性说明如下：
+　　设定为all：文件将被检索，且页面上的链接可以被查询；
+　　设定为none：文件将不被检索，且页面上的链接不可以被查询；
+　　设定为index：文件将被检索；
+　　设定为follow：页面上的链接可以被查询；
+　　设定为noindex：文件将不被检索，但页面上的链接可以被查询；
+　　设定为nofollow：文件将不被检索，页面上的链接可以被查询。
+
+    <!-- 搜索引擎抓取 -->
+    <meta name="robots" content="index,follow"/>
+
+　http-equiv属性
+　　1、<meta http-equiv="Content-Type" contect="text/html";charset=gb_2312-80">
+和 <meta http-equiv="Content-Language" contect="zh-CN">用以说明主页制作所使用的文字以及语言；
+　　又如英文是ISO-8859-1字符集，还有BIG5、utf-8、shift-Jis、Euc、Koi8-2等字符集；
+
+　　2、<meta http-equiv="Refresh" contect="n;url=a">定时让网页在指定的时间n内，跳转到页面a；
+
+　　3、<meta http-equiv="Expires" contect="Mon,12 May 2001 00:20:00 GMT">可以用于设定网页的到期时间，一旦过期则必须到服务器上重新调用。需要注意的是必须使用GMT时间格式；
+
+　　4、<meta http-equiv="Pragma" contect="no-cache">是用于设定禁止浏览器从本地机的缓存中调阅页面内容，设定后一旦离开网页就无法从Cache中再调出；
+
+　　5、<meta http-equiv="set-cookie" contect="Mon,12 May 2001 00:20:00 GMT">cookie设定，如果网页过期，存盘的cookie将被删除。需要注意的也是必须使用GMT时间格式；
+
+　　6、<meta http-equiv="Pics-label" contect="">网页等级评定，在IE的internet选项中有一项内容设置，可以防止浏览一些受限制的网站，而网站的限制级别就是通过meta属性来设置的；
+
+　　7、<meta http-equiv="windows-Target" contect="_top">强制页面在当前窗口中以独立页面显示，可以防止自己的网页被别人当作一个frame页调用；
+
+　　8、<meta http-equiv="Page-Enter" contect="revealTrans(duration=10,transtion= 50)">和<meta http-equiv="Page-Exit" contect="revealTrans(duration=20，transtion=6)">
+设定进入和离开页面时的特殊效果，这个功能即FrontPage中的“格式/网页过渡”，不过所加的页面不能够是一个frame页面。
+
+
+
+
+移动端：
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">在手机网页的制作上，我们一般是不让用户手动的去改变页面的大小的
+
+<!--开启对web app的支持-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+
+
+<!-- iOS 设备 begin -->
+    <meta name="apple-mobile-web-app-title" content="标题">
+
+<!-- 添加到主屏后的标题（iOS 6 新增） -->
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+
+<!-- 忽略识别邮箱，主要是针对安卓手机会自动将符合邮箱格式的字符串识别为邮箱地址-->
+<meta  name="format-detection" content="email=no" />
+
+<!--主要是正对苹果手机将数字自动识别为号码-->
+    <meta name="format-detection" content="telephone=no" />
+
+<!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <meta name="format-detection" content="telphone=no, email=no"/>
+
+<meta name="apple-itunes-app" content="app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL" />
+<!-- 添加智能 App 广告条 Smart App Banner：告诉浏览器这个网站对应的app，并在页面上显示下载banner:https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/PromotingAppswithAppBanners/PromotingAppswithAppBanners.html -->
+
+<!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+<meta name="HandheldFriendly" content="true">
+
+<!-- 微软的老式浏览器 -->
+<meta name="MobileOptimized" content="320">
+
+<!-- uc强制竖屏 -->
+<meta name="screen-orientation" content="portrait">
+
+<!-- QQ强制竖屏 -->
+<meta name="x5-orientation" content="portrait">
+
+<!-- UC强制全屏 -->
+<meta name="full-screen" content="yes">
+
+<!-- QQ强制全屏 -->
+<meta name="x5-fullscreen" content="true">
+
+<!-- UC应用模式 -->
+<meta name="browsermode" content="application">
+
+<!-- QQ应用模式 -->
+<meta name="x5-page-mode" content="app">
+
+<!-- windows phone 点击无高光 -->
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="msapplication-TileColor" content="#000"/>
+
+
+<!-- 声明文档使用的字符编码 -->
+    <meta charset='utf-8'>
+
+    <!-- 优先使用 IE 最新版本和 Chrome -->
+    <meta name="flexible" content="initial-dpr=1"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+
+    <!-- 页面描述 -->
+    <meta name="description" content="不超过150个字符"/>
+
+    <!-- 页面关键词 -->
+    <meta name="keywords" content=""/>
+
+    <!-- 网页作者 -->
+    <meta name="author" content="male"/>
+
+
+    <!-- iOS 设备 begin -->
+   <!-- 添加到主屏后的标题（iOS 6 新增） -->
+    <meta name="apple-mobile-web-app-title" content="标题">
+
+    
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- 是否启用 WebApp 全屏模式，删除苹果默认的工具栏和菜单栏 -->
+
+    <meta name="apple-itunes-app" content="app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL">
+    <!-- 添加智能 App 广告条 Smart App Banner（iOS 6+ Safari） -->
+
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!-- 设置苹果工具栏颜色 -->
+
+
+    
+    
+    <!-- 不让百度转码 -->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>

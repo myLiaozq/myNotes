@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>jQuery移动端酒店入住日期选择代码 - 站长素材</title>
+
+<link rel="stylesheet" type="text/css" href="css/index.css">
+
+</head>
+<body>
+  
+<!-- 入住时间选择 -->
+<div class="row select-time">
+	<span class="time entertime"></span>
+	<input type="text" class="input-enter none">
+	<span>入住</span>
+	<span class="c-back">一</span>
+	<span class="time leavetime"></span>
+	<input type="text" class="input-leave none">
+	<span>离店</span>
+	<span class="night">共1晚</span>
+</div>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/date.js"></script>
+<script type="text/javascript">
+	$('.select-time').hotelDate();
+</script>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p>适用浏览器：360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. 不支持IE8及以下浏览器。</p>
+<p>来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p>
+</div>
+</body>
+</html>

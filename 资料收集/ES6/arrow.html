@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>arrow</title>
+</head>
+<body>
+	<a href="#" id="aaa">箭头函数</a>
+	<script type="text/javascript" src="jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+		var array = [1, 2, 3];
+		//传统写法
+		array.forEach(function(v, i, a) {
+		    console.log(v,i,a);
+		});
+		//ES6
+		array.forEach(v => console.log(v));
+		$('#aaa').click((e)=>console.log(222));
+	</script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<!-- Website Design By: www.happyworm.com -->
+<title>Demo : jPlayer as an audio player</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link href="../../dist/skin/blue.monday/css/jplayer.blue.monday.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../../lib/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="../../dist/jplayer/jquery.jplayer.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function(){
+
+	$("#jquery_jplayer_1").jPlayer({
+		ready: function (event) {
+			$(this).jPlayer("setMedia", {
+				title: "Bubble",
+				mp3: "http://mp3file.mafengwo.net/201707051131/67fa9640d236f5eb4588033456730fe8/s10/M00/98/13/wKgBZ1lBYp2ADELaADouzD6Qx2s234.mp3",
+			}).jPlayer("play"); // 自动播
+		},
+		loop:true,
+		swfPath: "../../dist/jplayer",
+		cssSelectorAncestor: "#jp_container_1",
+		supplied: "mp3",
+		wmode: "window",
+		useStateClassSkin: true,
+		autoBlur: false,
+		smoothPlayBar: true,
+		keyEnabled: true,
+		remainingDuration: false,
+		toggleDuration: true,
+	});
+
+	$("#jquery_jplayer_2").jPlayer({
+		ready: function (event) {
+			$(this).jPlayer("setMedia", {
+				title: "Bubble",
+				mp3: "http://mp3file.mafengwo.net/201707051131/67fa9640d236f5eb4588033456730fe8/s10/M00/98/13/wKgBZ1lBYp2ADELaADouzD6Qx2s234.mp3",
+			}).jPlayer("play"); // 自动播
+		},
+		loop:true,
+		swfPath: "../../dist/jplayer",
+		cssSelectorAncestor: "#jp_container_2",
+		supplied: "mp3",
+		wmode: "window",
+		useStateClassSkin: true,
+		autoBlur: false,
+		smoothPlayBar: true,
+		keyEnabled: true,
+		remainingDuration: false,
+		toggleDuration: true,
+	});
+});
+//]]>
+</script>
+</head>
+<body>
+<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+<div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
+	<div class="jp-type-single">
+		<div class="jp-gui jp-interface">
+			<div class="jp-controls">
+				<button class="jp-play" role="button" tabindex="0">play</button>
+				<!-- <button class="jp-stop" role="button" tabindex="0">stop</button> -->
+			</div>
+			<div class="jp-progress">
+				<div class="jp-seek-bar">
+					<div class="jp-play-bar"></div>
+				</div>
+			</div>
+			<!-- <div class="jp-volume-controls">
+				<button class="jp-mute" role="button" tabindex="0">mute</button>
+				<button class="jp-volume-max" role="button" tabindex="0">max volume</button>
+				<div class="jp-volume-bar">
+					<div class="jp-volume-bar-value"></div>
+				</div>
+			</div> -->
+			<div class="jp-time-holder">
+				<div class="jp-current-time" role="timer" aria-label="time"></div>
+				<div class="jp-current-line" role="timer-line" aria-label="time">/</div>
+				<div class="jp-duration" role="timer" aria-label="duration"></div>
+				<!-- <div class="jp-toggles">
+					<button class="jp-repeat" role="button" tabindex="0">repeat</button>
+				</div> -->
+			</div>
+		</div>
+		<!-- <div class="jp-details">
+			<div class="jp-title" aria-label="title">&nbsp;</div>
+		</div> -->
+	</div>
+</div>
+
+<div id="jquery_jplayer_2" class="jp-jplayer"></div>
+<div id="jp_container_2" class="jp-audio" role="application" aria-label="media player">
+	<div class="jp-type-single">
+		<div class="jp-gui jp-interface">
+			<div class="jp-controls">
+				<button class="jp-play" role="button" tabindex="0">play</button>
+				<!-- <button class="jp-stop" role="button" tabindex="0">stop</button> -->
+			</div>
+			<div class="jp-progress">
+				<div class="jp-seek-bar">
+					<div class="jp-play-bar"></div>
+				</div>
+			</div>
+			<!-- <div class="jp-volume-controls">
+				<button class="jp-mute" role="button" tabindex="0">mute</button>
+				<button class="jp-volume-max" role="button" tabindex="0">max volume</button>
+				<div class="jp-volume-bar">
+					<div class="jp-volume-bar-value"></div>
+				</div>
+			</div> -->
+			<div class="jp-time-holder">
+				<div class="jp-current-time" role="timer" aria-label="time"></div>
+				<div class="jp-current-line" role="timer-line" aria-label="time">/</div>
+				<div class="jp-duration" role="timer" aria-label="duration"></div>
+				<!-- <div class="jp-toggles">
+					<button class="jp-repeat" role="button" tabindex="0">repeat</button>
+				</div> -->
+			</div>
+		</div>
+		<!-- <div class="jp-details">
+			<div class="jp-title" aria-label="title">&nbsp;</div>
+		</div> -->
+	</div>
+</div>
+</body>
+
+</html>

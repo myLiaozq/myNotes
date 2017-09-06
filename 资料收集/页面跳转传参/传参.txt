@@ -1,0 +1,79 @@
+
+方法1：
+传参：window.location.href="LanmeiAirlinesSelectDate.html?pram=one&pram=two";
+
+读参：var getUrl = location.search.substring(1); //获取url中"?"符后的字串 
+
+// 跳转url 以及传递的参数  
+window.location.href='http://img.as.com/news/image/newscenter/20111107zt/whd/30share/jieguo1n.html?money='+nums+'&url='+fxurl;  
+  
+    // 获取money，以及分型的地址  
+    <Script language="javascript">   
+function GetRequest() {   
+   var url = location.search; //获取url中"?"符后的字串   
+   var theRequest = new Object();   
+   if (url.indexOf("?") != -1) {   
+      var str = url.substr(1);   
+      strs = str.split("&");   
+      for(var i = 0; i < strs.length; i ++) {   
+         theRequest[strs[i].split("=")[0]]=decodeURIComponent(strs[i].split("=")[1]);   
+      }   
+   }   
+   return theRequest;   
+} 
+GetRequest();  
+</script>  
+
+
+方法二：
+
+存储：sessionStorage.setItem('Login_Name',uname.value); //localStorage
+
+获取：var uname = sessionStorage.getItem('Login_Name');
+
+sessionStorage.removeItem(key);	//删除一个数据
+sessionStorage.clear()		//清除当前内存中所有的数据
+sessionStorage.length		//数据的个数
+sessionStorage.key(index)	//获取第index个key
+
+
+方法三：
+实现思想就是通过document.cookie进行设置值以及取值
+main.html
+<script>
+function setCookie(name,value){
+var Days = 30; 
+　　var exp　= new Date();
+　　exp.setTime(exp.getTime() +Days*24*60*60*1000);
+　　document.cookie = ""+name +"="+ escape (value) + ";expires=" + exp.toGMTString();
+}
+setCookie('name','yuchao');
+location.href = "other.html";
+</script>
+other.html:
+<script>
+function getCookie(name){
+var arr =document.cookie.match(new RegExp("(^|)"+name+"=([^;]*)(;|$)"));
+　　if(arr !=null) return unescape(arr[2]); 
+return null;
+}
+document.getElementById(xx).innerHTML=getCookie('name');
+</script>
+
+方法四：
+
+<form id="searchForm" target="_blank" method="post" action="http://219.134.185.9:8088/lqWeb/reservation/AVQuery.do?childCount=0&adultCount=0&tripType=OW&returnDate=&dstcity=MFM&sureDate=&CURRENCY=CNY&email=&takeoffDate=2017-07-26&orgcity=PEK&cabinType=BUSINESS&language=CN&orgcitycode=MFM?">
+     
+	<input type="submit">
+   
+</form>	
+<script type="text/javascript">
+	   
+	function searchAirTicket(){
+	
+		   
+		$("#searchForm").submit();
+	   
+	}
+	
+</script>

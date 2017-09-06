@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>jQuery表单输入城市查询天气预报代码</title>
+
+<script src="jquery.min.js"></script>
+<script src="template-native.js"></script>
+<script type="text/template" id="templateId">
+	<%for(var i=0;i<list.length;i++){%>
+		<tr>
+			<td><%=list[i].date%></td>
+			<td><img src="<%=list[i].dayPictureUrl%>"></td>
+			<td><img src="<%=list[i].nightPictureUrl%>"></td>
+			<td><%=list[i].temperature%></td>
+			<td><%=list[i].weather%></td>
+			<td><%=list[i].wind%></td>
+		</tr>
+	<%}%>
+</script>
+
+</head>
+<body>
+
+<center><input  type="text" id="cityName"  placeholder="请输入城市"  >  <input type="button" value="查询天气">
+<script type="text/javascript">
+		$("input[type=button]").on("click",function(){
+
+				var cityName=document.querySelector("#cityName").value;
+				//跨域是浏览器的安全策略.
+				//我现在是jQuery ，jQuery 怎么去解决
+				//jQuery 解决的方式.
+				$.ajax({
+						url:"http://api.map.baidu.com/telematics/v3/weather",
+						type:"get",
+						data:{
+							  location:cityName,
+							  output:'json',
+							  ak:'6tYzTvGZSOpYB5Oc2YGGOKt8'
+						},
+						/*预期服务器端返回的数据类型，假设我现在跨域了，我就改成jsonp 就可以了 */
+					dataType:"jsonp",
+					success:function(data){
+						console.log(data);
+						//百度那边的 数据已经回来，我现在要解析这个数据.
+						var weatherData=data.results[0].weather_data;
+						var obj={
+							list:weatherData
+						};
+						var html=template("templateId",obj);
+						document.querySelector("table").innerHTML=html;
+
+					}
+				});
+
+
+		});
+
+</script>
+<table></table>
+</center>
+</body>
+</html>

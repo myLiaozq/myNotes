@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jedate/jquery-1.7.2.js"></script>
+	<script type="text/javascript" src="jedate/jquery.jedate.js"></script>
+	<link type="text/css" rel="stylesheet" href="jedate/skin/jedate.css">
+</head>
+<body>
+	<input class="datainp wicon" id="optsdate" type="text" placeholder="开始日期" value=""  readonly>
+
+	<script type="text/javascript">
+
+		var cancel ={
+			minDate:'2017-05-08',
+			maxDate:'2018-12-16'
+		};
+		var opts = $.extend({
+			type:"je",
+			minDate:undefined,
+			maxDate:undefined
+		},cancel);
+
+		$("#optsdate").jeDate({
+			isinitVal: true,
+			festival: true,
+			trigger: "click",
+			isTime:false,
+			ishmsVal: false,
+			minDate: opts.minDate,
+			maxDate: opts.maxDate,
+			format: "YYYY-MM-DD",
+			zIndex: 3000,
+			okfun:function (elem,val) {
+				alert(elem)
+			}
+		});
+	</script>
+</body>
+</html>

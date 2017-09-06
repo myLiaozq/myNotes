@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		ul,li{
+			margin:0;
+			padding:0;
+			list-style-type: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		.fromcityMenu{
+			width: 173px;
+			display: none;
+			background: #fff;
+			box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+		}
+	</style>
+</head>
+<body>
+	<div class="localSelectStart">
+		<input type="text" class="fromcityinput inputDown Autocomplete" id="fromcity" value="" placeholder="">
+		<!-- <img src="images/EN/downArrow.png"> -->
+		<ul class="fromcityMenu">
+			<!-- <li><a href="#" title="Phnom Penh, Cambodia (Pochentong - PNH)">Phnom Penh</a></li>
+			<li><a href="#" title="Siem Reap, Cambodia (Siem Reap - REP)">Siem Reap</a></li>
+			<li><a href="#" title="Siem Reap, Cambodia (Siem Reap - REP)">Siem Reap</a></li>
+			<li><a href="#" title="Siem Reap, Cambodia (Siem Reap - REP)">Siem Reap</a></li>
+			<li><a href="#" title="Siem Reap, Cambodia (Siem Reap - REP)">Siem Reap</a></li> -->
+		</ul>
+	</div>
+	<script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+	<script type="text/javascript">
+
+		var fromcityData = ['Cambodia','Siem Reap', 'REP)'];
+
+		$.each(fromcityData,function(i,val){
+			$('.fromcityMenu').append('<li><a href="#" title="'+val+'">'+val+'</a></li>');
+		});
+
+		$('#fromcity').click(function(){
+			$(this).siblings('ul').show();
+		});
+
+		$('.fromcityMenu a').click(function(e){
+			e.preventDefault();
+			var val = $(this).html();
+			$('#fromcity').val(val);
+
+			$(this).parent().parent().hide();
+		});
+
+		// 模糊匹配
+		$('.localSelectStart').on('keyup','.Autocomplete',function(event) {
+			console.log(333);
+			$(this).siblings('ul').empty();
+			
+			var currentVal = $(this).val().toLowerCase();
+			var srdata = [];
+			for (var i = 0; i < fromcityData.length; i++) {
+				if (currentVal.trim().length > 0 && fromcityData[i].toLowerCase().indexOf(currentVal) > -1) {
+					srdata.push(fromcityData[i]);
+				}
+			}
+			var that = this;
+			$.each(srdata,function(i,val){
+				$(that).siblings('ul').append('<li><a href="#" title="'+val+'">'+val+'</a></li>');
+			});
+			if(currentVal===''){
+				$.each(fromcityData,function(i,val){
+					$(that).siblings('ul').append('<li><a href="#" title="'+val+'">'+val+'</a></li>');
+				});
+			}
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head runat="server">
+<title>jQuery实现CheckBox全选、全不选</title>
+ 
+</head>
+<body>
+    <div>
+        <input type="checkbox" id="ckAll" />check all<br />
+        <input type="checkbox" name="sub" />1<br />
+        <input type="checkbox" name="sub"/>2<br />
+        <input type="checkbox" name="sub"/>3<br />
+        <input type="checkbox" name="sub"/>4<br />
+    </div>
+
+    <script type="text/javascript" src="jquery-1.11.3.js"></script>  
+    <script type="text/javascript">
+        $("#ckAll").click(function() {
+            $("input[name='sub']").prop("checked", this.checked);
+          });
+          
+          $("input[name='sub']").click(function() {
+            var $subs = $("input[name='sub']");
+            $("#ckAll").prop("checked" , $subs.length == $subs.filter(":checked").length ? true :false);
+          });
+    </script>
+
+</body>
+</html>

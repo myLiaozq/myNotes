@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>滚动菜单兼容PC 移动端</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+	<link rel="stylesheet" href="css/global.css">
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="fonts/fontCss.css">
+	<link rel="stylesheet" href="css/scrollmenu.css">
+</head>
+<body style="margin: 0;width: 100%">
+	<div style="width: 300px;margin: 300px auto">
+		<div class="dw-btn btn-primary" style="width:300px;text-align:center;display: block;margin: 20px 0; " onclick="showList()" style="cursor: pointer;">横向滚动菜单</div>
+
+		<div class="dw-btn btn-success" style="width:300px;text-align:center;display: block;margin: 20px 0; " onclick="showList1()" >点击打开选择滚动菜单</div>
+
+		<div class="dw-btn btn-danger" style="width:300px;text-align:center;display: block;margin: 20px 0; " onclick="showListbscroll()">bscroll的滚动效果</div>
+
+		<div class="dw-btn btn-deepred" style="width:300px;text-align:center;display: block;margin: 20px 0; " onclick="showListnoborder()">没有分割线</div>
+
+		<div class="dw-btn btn-success" style="width:300px;text-align:center;display: block;margin: 20px 0; " onclick="showListbounce()">其他进入效果</div>
+	</div>
+</body>
+
+<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script src="js/bscroll.js"></script>
+<script src="js/scrollmenu.js"></script>
+<script>
+	function showList(){
+		$("body").scrollmenu({
+			type:'cross',
+			// bscroll:true,
+			// animateIn:'bounceIn',
+			// animateOut:'bounceOut',
+			click:function(ret){
+				if(ret.hasHref){
+					return
+				}else{
+					// switch (ret.index){
+					// 	case 0:
+					// 	alert(0);
+					// 	break;
+					// }
+					alert(JSON.stringify(ret));
+				}
+			}
+		});
+	}
+
+	function showList1(){
+		$("body").scrollmenu({
+			type:'',
+			// bscroll:true,
+			// animateIn:'bounceIn',
+			// animateOut:'bounceOut',
+			click:function(ret){
+				if(ret.hasHref){
+					return
+				}else{
+					// switch (ret.index){
+					// 	case 0:
+					// 	alert(0);
+					// 	break;
+					// }
+					alert(JSON.stringify(ret));
+				}
+			}
+		});
+	}
+
+	function showListbscroll(){
+		$("body").scrollmenu({
+			// type:'',
+			bscroll:true,
+			// animateIn:'bounceIn',
+			// animateOut:'bounceOut',
+			click:function(ret){
+				if(ret.hasHref){
+					return
+				}else{
+					// switch (ret.index){
+					// 	case 0:
+					// 	alert(0);
+					// 	break;
+					// }
+					alert(JSON.stringify(ret));
+				}
+			}
+		});
+	}
+
+	function showListnoborder(){
+		$("body").scrollmenu({
+			type:'cross',
+			hasLineBorder:false,
+			// bscroll:true,
+			// animateIn:'bounceIn',
+			// animateOut:'bounceOut',
+			click:function(ret){
+				if(ret.hasHref){
+					return
+				}else{
+					// switch (ret.index){
+					// 	case 0:
+					// 	alert(0);
+					// 	break;
+					// }
+					alert(JSON.stringify(ret));
+				}
+			}
+		});
+	}
+
+	function showListbounce(){
+		$("body").scrollmenu({
+			type:'cross',
+			hasLineBorder:false,
+			// bscroll:true,
+			animateIn:'bounceIn',
+			animateOut:'bounceOut',
+			click:function(ret){
+				if(ret.hasHref){
+					return
+				}else{
+					// switch (ret.index){
+					// 	case 0:
+					// 	alert(0);
+					// 	break;
+					// }
+					alert(JSON.stringify(ret));
+				}
+			}
+		});
+	}
+</script>
+</html>

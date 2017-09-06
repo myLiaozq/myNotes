@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>layer</title>
+	<style type="text/css">
+		.layui-layer-btn{
+			text-align: center!important;
+			padding-bottom: 30px !important;
+		}
+		.layui-layer-btn a{
+			width: 120px;
+			height: 40px !important;
+			line-height: 40px!important;
+			text-align: center;
+			color:#fff!important;	
+			border:none!important;
+			padding:0!important;
+			margin:0!important;
+			border-radius: 22px !important;
+		}
+		.layui-layer-btn a:hover{
+			background: #1f2c5c!important;
+		}
+		.layui-layer-btn .layui-layer-btn0{
+			background: #8ec060!important;
+		}
+		.layui-layer-btn .layui-layer-btn1{
+			background: #d0011b!important;
+			margin-left: 60px !important;
+		}
+	</style>
+</head>
+<body>
+	<button class="btn">弹出框</button>
+	<button class="btn2">确定</button>
+	<script type="text/javascript" src="jquery-1.11.3.js"></script>
+	<script type="text/javascript" src="layer/layer.js"></script>
+	<script type="text/javascript">
+		// 点击搜索按钮
+		$('.btn').click(function(e){
+			e.preventDefault();
+			layer.open({
+			  type: 1, //Page层类型
+			  area: ['500px', '300px'],
+			  title: false,
+			  shadeClose: true, //点击遮罩关闭
+			  shade: 0.6, //遮罩透明度
+			  maxmin: false, //允许全屏最小化
+			  anim: 1, //0-6的动画形式，-1不开启
+			  btn: ['确定', '取消'],
+			  content: '<div style="text-align:center;padding:0 20px;padding-top:30px;"><p style="font-size:20px">The website is under construction, please look forward to...</p></div>',
+			  yes: function(){
+			  	console.log('确定回调');
+			  	layer.closeAll();
+			  }
+			});    
+		});
+
+		$('.btn2').click(function(e){
+			e.preventDefault();
+			layer.open({
+			  type: 1, //Page层类型
+			  area: ['500px', '300px'],
+			  title: false,
+			  shadeClose: true, //点击遮罩关闭
+			  shade: 0.6, //遮罩透明度
+			  maxmin: false, //允许全屏最小化
+			  anim: 1, //0-6的动画形式，-1不开启
+			  btn: ['确定'],
+			  content: '<div style="text-align:center;padding:0 20px;padding-top:30px;"><p style="font-size:20px">The website is under construction, please look forward to...</p></div>',
+			  yes: function(){
+			  	console.log('确定回调');
+			  	layer.closeAll();
+			  }
+			});    
+		});
+		
+	</script>
+</body>
+</html>

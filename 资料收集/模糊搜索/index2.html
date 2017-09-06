@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.dropdown-menu li{
+			width: 200px;
+		}
+	</style>
+</head>
+<body>
+	
+	<input type="text" class="myInput">
+	<ul class="dropdown-menu">
+		<!-- <li>郑州/CGO/ZHENGZHOU</li>
+		<li>重庆/CKG/CHONGQING</li>
+		<li>北京/PEK/BEIJING</li>
+		<li>上海/PVG/SHANGHAI</li>
+		<li>南京/NKG/NANJING</li> -->
+		
+	</ul>
+	<script src="jquery-1.11.3.js"></script>
+	<script>
+		var cityData = ['郑州/CGO/ZHENGZHOU','重庆/CKG/CHONGQING','北京/PEK/BEIJING','上海/PVG/SHANGHAI','南京/NKG/NANJING'];
+
+		$('.myInput').on("keyup",function(event){
+			$('.dropdown-menu').empty();
+		    var currentVal = $(this).val().toLowerCase();
+		    var srdata = [];
+		    for (var i = 0; i < cityData.length; i++) {
+		    	if (currentVal.trim().length > 0 && cityData[i].toLowerCase().indexOf(currentVal) > -1) {
+		    		srdata.push(cityData[i]);
+		    	}
+		    }
+		    var that = this;
+		    $.each(srdata,function(i,val){
+		    	$(that).siblings('ul').append('<li><a href="#" title="'+val+'">'+val+'</a></li>');
+		    });
+		});
+	</script>
+</body>
+</html>

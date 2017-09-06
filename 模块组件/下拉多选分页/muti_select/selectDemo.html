@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>pageSelect</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	<link href="css/selectPage.css" rel="stylesheet" />
+</head>
+<body>
+	<div id='multi_select'></div>
+	<div id='multi_select2'></div>
+
+	<script src="src/jquery-1.10.2.min.js"></script>
+	<script src="src/MultiSelectDropList.js"></script>
+	<script src="src/jqueryPage.js"></script>
+	<script>
+	$(function (){
+	  $('#multi_select').MSDL({
+	    'resWidth': '200',
+	    'conWidth': '200',
+	    'url': 'src/data.json',
+	    'pageSize': '3',
+	    'data_display':'display',	
+        'data_value':'value',
+        'checkBox':'radio',
+        'defaultRadio': {'display':'告警','value':'1'}
+	  });
+
+	  $('#multi_select2').MSDL({
+	    'resWidth': '200',
+	    'conWidth': '200',
+	    'url': 'src/data2.json',
+	    'pageSize': '5',
+	    'data_display':"display",	
+        'data_value':"value",
+     	'defaultMult': [{'display':'告警2','value':'1'},{'display':'资源2','value':'2'}]
+	  });
+	});
+
+	</script>
+</body>
+</html>

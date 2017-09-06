@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" class="btn c-333 text-c js-code" value="获取验证码" onclick="settime(this);" >
+
+	<script type="text/javascript" charset="utf-8">
+	    var countdown=60;
+	function settime(obj){
+	    if(countdown == 0){
+	        obj.removeAttribute("disabled");
+	        obj.value="获取校验码";
+	        countdown =60;
+	        return;
+	    }else{
+	        obj.setAttribute("disabled",true);
+	        obj.value="重新发送（"+countdown+"s)";
+	        countdown--;
+	    }
+	    setTimeout(function(){settime(obj);},1000);
+	}
+	</script>
+</body>
+</html>

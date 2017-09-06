@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CORS</title>
+</head>
+<body>
+	CORS（Cross-Origin Resource Sharing）跨域资源共享，定义了必须在访问跨域资源时，浏览器与服务器应该如何沟通。CORS背后的基本思想就是使用自定义的HTTP头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功还是失败。目前，所有浏览器都支持该功能，IE浏览器不能低于IE10。整个CORS通信过程，都是浏览器自动完成，不需要用户参与。对于开发者来说，CORS通信与同源的AJAX通信没有差别，代码完全一样。浏览器一旦发现AJAX请求跨源，就会自动添加一些附加的头信息，有时还会多出一次附加的请求，但用户不会有感觉。
+
+	因此，实现CORS通信的关键是服务器。只要服务器实现了CORS接口，就可以跨源通信。
+
+	平时的ajax请求可能是这样的:
+
+	<script type="text/javascript">
+	    var xhr = new XMLHttpRequest();
+	    xhr.open("POST", "/damonare",true);
+	    xhr.send();
+	</script>
+
+	以上damonare部分是相对路径，如果我们要使用CORS，相关Ajax代码可能如下所示：
+
+	<script type="text/javascript">
+	    var xhr = new XMLHttpRequest();
+	    xhr.open("￼GET", "http://segmentfault.com/u/trigkit4/",true);
+	    xhr.send();
+	</script>
+
+	代码与之前的区别就在于相对路径换成了其他域的绝对路径，也就是你要跨域访问的接口地址。
+
+	服务器端对于CORS的支持，主要就是通过设置Access-Control-Allow-Origin="*"来进行的。如果浏览器检测到相应的设置，就可以允许Ajax进行跨域的访问。关于CORS更多了解可以看下阮一峰老师的这一篇文章：跨域资源共享 CORS 详解
+
+	CORS和JSONP对比
+	JSONP只能实现GET请求，而CORS支持所有类型的HTTP请求。
+	使用CORS，开发者可以使用普通的XMLHttpRequest发起请求和获得数据，比起JSONP有更好的错误处理。
+	JSONP主要被老的浏览器支持，它们往往不支持CORS，而绝大多数现代浏览器都已经支持了CORS）。
+
+	CORS与JSONP相比，无疑更为先进、方便和可靠。
+</body>
+</html>

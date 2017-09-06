@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jquery输入框邮箱下拉提示层</title>
+
+<style type="text/css"> 
+*{ margin:0; padding:0;}
+body { font:12px/1.8 Arial; color:#666;}
+ul,li{ list-style:none;}
+
+
+.login .on_changes{width:232px; position:absolute; top:40px; list-style:none; background:#FFF; border:1px solid #000; display:none; padding:10px;}
+.login .on_changes li{margin:8px;padding:4px;}
+.login .on_changes li.active{ background:#CEE7FF;}
+</style> 
+
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript" src="inputmail.js"></script>
+
+</head>
+<body>
+
+
+<div class="wrap">
+
+	<script type="text/javascript">
+	$(function(){
+		$("#loginName").changeTips({
+			divTip:".on_changes1"
+		}); 
+		$("#loginName2").changeTips({
+			divTip:".on_changes2"
+		}); 
+	});
+	</script>
+	
+	<div class="login">
+		<input type="text" maxlength="128" name="loginName" id="loginName" placeholder="邮箱/会员帐号/手机号" />
+		<ul class="on_changes1 on_changes" style="position: absolute; top: 42px">
+			<li email="">请选择邮箱类型</li>
+			<li email=""></li>
+			<li email="@sina.com"></li>
+			<li email="@163.com"></li>
+			<li email="@qq.com"></li>
+			<li email="@hotmail.com"></li>
+			<li email="@126.com"></li>
+			<li email="@gmail.com"></li>
+			<li email="@yahoo.com"></li>
+		</ul>
+	</div>
+	<div class="login">
+		<input type="text" maxlength="128" name="loginName" id="loginName2" placeholder="邮箱/会员帐号/手机号" />
+		<ul class="on_changes2 on_changes" style="position: absolute; top: 42px">
+			<li email="">请选择邮箱类型</li>
+			<li email=""></li>
+			<li email="@sina.com"></li>
+			<li email="@163.com"></li>
+			<li email="@qq.com"></li>
+			<li email="@hotmail.com"></li>
+			<li email="@126.com"></li>
+			<li email="@gmail.com"></li>
+			<li email="@yahoo.com"></li>
+		</ul>
+	</div>
+</div>
+
+</body> 
+</html>

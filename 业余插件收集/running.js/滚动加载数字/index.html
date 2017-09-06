@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+
+<title>jQuery.Running.js</title>
+<link rel="stylesheet" href="css/jquery.running.css">
+<link rel="stylesheet" href="css/docs.css">
+<!--[if lt IE 9]>
+<script src="js/html5.js"></script>
+<![endif]-->
+<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="js/jquery.running.min.js"></script>
+<script type="text/javascript" src="js/docs.js"></script>
+
+ 
+
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<div class="slider">
+    <h1>jQuery.Running.js</h1>
+    <p>jQuery.Running.js (奔跑吧，数字！)是一款可以让数字，柱形图，饼形图跑起来的插件，支持滚动条响应。压缩后文件大小仅4k。</p>
+</div>
+<section>
+
+	<h1>使用方法</h1>
+    <p>加载jQuery.Running.css 样式文件</p>
+    <pre>&lt;link rel=&quot;stylesheet&quot; href=&quot;css/jquery.running.css&quot;&gt;</pre>
+    <p>调用jQuery类库和jQuery.Running.min.js文件</p>
+	<pre>&lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery-1.7.2.js&quot;&gt;&lt;/script&gt;<br>&lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery.running.js&quot;&gt;&lt;/script&gt;</pre>	
+
+	<p>启用插件 $(container).running();</p>
+    <pre>$(function(){
+$('body').running();
+
+})</pre>
+	<h1>效果演示</h1>
+    <div class="list">
+    	<div class="item selected">
+        	
+            <div class="text">
+            	<h2>
+                	
+              数字跑动场景</h2>
+       
+                <div class="attr">
+                	<dl>
+                    	<dd class="d1">
+                        	<h4>目标额</h4>
+                            <h3><span class="animateNum" data-animatetype="num" data-animatetarget="999.9">999.9</span>万</h3>
+                        </dd>
+                    	<dd class="d2">
+                        	<h4>已完成</h4>
+                            <h3><span class="animateNum" data-animatetarget="30">30</span>%</h3>
+                        </dd>
+                    	<dd class="d3">
+                        	<h4>已认投</h4>
+                            <h3><span class="animateNum" data-animatetarget="999.9">999.9</span>万</h3>
+                        </dd>
+                  </dl>
+                </div>
+                <h2>代码</h2>
+                <pre>&lt;span class=&quot;animateNum&quot; data-animatetarget=&quot;999.9&quot;&gt;999.9&lt;/span&gt;万</pre>
+            </div>
+        </div>
+        <!--//item-->
+        <div class="item selected">
+        	
+          <div class="text">
+            	<h2>
+                	
+                    柱形图跑动场景             </h2>
+                    <h3>目标额</h3>
+                <div class="prograss">
+                	<div class="bar animateBar" data-animatetarget="30" style="width:30%;"></div>
+                </div>
+                 <h3>已完成</h3>
+                <div class="prograss">
+                	<div class="bar animateBar" data-animatetarget="80" style="width:80%;"></div>
+                </div>
+                 <h3>已认投</h3>
+                
+            <div class="prograss">
+                	<div class="bar animateBar" data-animatetarget="100" style="width:80%;"></div>
+            </div>
+                
+                  <h2>代码</h2>
+                    <p>柱形图跑动效果需要有固定的写法来布局一个柱形图。所以当你使用柱形跑动的时候，需要严格按下面的结构来书写。</p>
+                  <pre>&lt;div class=&quot;prograss&quot;&gt;<br>&lt;div class=&quot;bar animateBar&quot; data-animatetarget=&quot;100&quot; style=&quot;width:80%;&quot;&gt;&lt;/div&gt;<br>&lt;/div&gt;</pre>
+         </div>
+        </div>
+        <!--//item-->
+        <div class="item">
+        	 
+          <div class="text">
+            	<h2>
+               	
+                   圆圈统计图跑动场景                </h2>
+              	
+                <h3>目标额</h3>
+                <!--pie-->
+                    <div class="pie animatePie" data-animatetarget="65">
+                    <div class="pieLeft">
+                      <div class="pieLeftInner"></div>
+                    </div>
+                    <div class="pieRight">
+                      <div class="pieRightInner"></div>
+                    </div>
+                    <div class="pieInner"><span>65</span>%</div>
+                    </div>
+                    <!--//pie-->
+                    
+                     <h3>已完成</h3>
+                    <!--pie-->
+                    <div class="pie animatePie" data-animatetarget="65">
+                    <div class="pieLeft">
+                      <div class="pieLeftInner"></div>
+                    </div>
+                    <div class="pieRight">
+                      <div class="pieRightInner"></div>
+                    </div>
+                    <div class="pieInner"><span>65</span>%</div>
+                    </div>
+                    <!--//pie-->
+                    
+                    <h3>已认投</h3>
+                    <!--pie-->
+                    <div class="pie animatePie" data-animatetarget="65">
+                    <div class="pieLeft">
+                      <div class="pieLeftInner"></div>
+                    </div>
+                    <div class="pieRight">
+                      <div class="pieRightInner"></div>
+                    </div>
+                    <div class="pieInner"><span>65</span>%</div>
+                    </div>
+                    <!--//pie-->
+                  
+                  
+            <h1>代码</h1>
+                  <p>圆圈的Running首先需要制作一个圆圈，css3制作圆圈是很复杂的一道工序。jQuery.Running提供了一个最简洁有效的布局来完成一个圆圈的布局，同柱形跑动一样，你同样需要严格按照下面的结构来书写html。</p>
+                    
+                  <pre>&lt;div class=&quot;pie animatePie&quot; data-animatetarget=&quot;65&quot;&gt;<br>&lt;div class=&quot;pieLeft&quot;&gt;<br>&lt;div class=&quot;pieLeftInner&quot;&gt;&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;div class=&quot;pieRight&quot;&gt;<br>&lt;div class=&quot;pieRightInner&quot;&gt;&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;div class=&quot;pieInner&quot;&gt;&lt;span&gt;65&lt;/span&gt;%&lt;/div&gt;<br>&lt;/div&gt;</pre>
+            </div>
+        </div>
+        <!--//item-->
+        
+        <!--//item-->
+        
+        <!--//item-->
+        
+        <!--//item-->
+    </div>
+</section>
+</div>
+
+</body>
+</html>
+

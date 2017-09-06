@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>演示：超酷的页面滚动效果</title>
+<style type="text/css">
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;}
+body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";background:#B6CDFC;}
+#main{width:910px;min-height:600px;margin:30px auto 0 auto;background:#fff;-moz-border-radius:12px;-khtml-border-radius: 12px;-webkit-border-radius:12px;border-radius:12px;}
+/* nav */
+.nav{width:160px;position:fixed;top:0;left:0;z-index:1999;background:#f0f0f0;border:1px solid #ccc;margin:20% 0 0 10px;
+	-webkit-border-radius:6px;
+	-moz-border-radius:6px;
+	border-radius:6px;
+	
+	-webkit-box-shadow:0 5px 10px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow:0 5px 10px rgba(0, 0, 0, 0.2);
+	box-shadow:0 5px 10px rgba(0, 0, 0, 0.2);
+}
+*html,*html body{background-image:url(about:blank);background-attachment:fixed;}
+*html .nav{position:absolute;top:expression(eval(document.documentElement.scrollTop));}
+.nav li{height:36px; line-height:36px; border-bottom:1px solid #d3d3d3; text-align:center; cursor:pointer}
+.nav li:last-child{border-bottom:none}
+.nav li a{display:block; width:98%; height:34px;font-size:16px;}
+.nav li a:hover{background:#f9f9f9; text-decoration:none}
+.nav li a.cur{background:#ffc}
+/* box */
+.box{height:700px; margin: 0 10px}
+.box h3{height:32px; line-height:32px; padding-left:20px; font-size:14px}
+.box p{line-height:30px; margin:20px; text-align:center; font-size:28px}
+.box p span{margin:10px}
+#pro,#ser{background:url(img/bg.jpg)}
+#news,#con{background:url(img/bg2.gif)}
+</style>
+<script src="http://www.jq22.com/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+
+	var pro_top = $("#pro").offset().top;
+	var news_top = $("#news").offset().top;
+	var ser_top = $("#ser").offset().top;
+	var con_top = $("#con").offset().top;
+	var job_top = $("#job").offset().top;
+	//alert(tops);
+	$(window).scroll(function(){
+		var scroH = $(this).scrollTop();
+		if(scroH>=job_top){
+			set_cur(".job");
+		}else if(scroH>=con_top){
+			set_cur(".con");
+		}else if(scroH>=ser_top){
+			set_cur(".ser");
+		}else if(scroH>=news_top){
+			set_cur(".news");
+		}else if(scroH>=pro_top){
+			set_cur(".pro");
+		}
+	});
+	
+	$(".nav li a").click(function() {
+		var el = $(this).attr('class');
+     	$('html, body').animate({
+         	scrollTop: $("#"+el).offset().top
+     	}, 300);
+		$(this).addClass("cur").parent().siblings().find("a").removeClass("cur");	
+ 	});
+	
+});
+
+function set_cur(n){
+	if($(".nav a").hasClass("cur")){
+		$(".nav a").removeClass("cur");
+	}
+	$(".nav a"+n).addClass("cur");
+}
+</script>
+
+</head>
+
+<body>
+
+<div style="height:100px;overflow:hidden;"></div>
+
+<ul class="nav">
+	<li><a class="pro">产品展示</a></li>
+	<li><a class="news">新闻中心</a></li>
+	<li><a class="ser">服务支持</a></li>
+	<li><a class="con">联系我们</a></li>
+	<li><a class="job">人才招聘</a></li>
+</ul>
+
+<div id="main">
+
+	<div id="pro" class="box">
+		<h3>产品展示</h3>
+		<p><span class="cur">效果1</span><span><a href="index2.html">效果2</a></span><span><a href="index3.html">效果3</a></span></p>
+	</div>
+	
+	<div id="news" class="box">
+		<h3>新闻中心</h3>
+	</div>
+	
+	<div id="ser" class="box">
+		<h3>服务支持</h3>
+	</div>
+	
+	<div id="con" class="box">
+		<h3>联系我们</h3>
+	</div>
+	
+	<div id="job" class="box">
+		<h3>人才招聘</h3>
+	</div>
+</div>
+
+
+</body>
+</html>

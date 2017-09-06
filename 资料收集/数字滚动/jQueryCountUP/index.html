@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="jquery.countUp.js"></script>
+</head>
+    <style>
+        .timer1{font-size: 15px;color: #c40f3a;font-weight: bold;margin-left: 50px;margin-top: 10px;}
+        .timer2{font-size: 20px;color: #ffca08;font-weight: bold;margin-left: 50px;margin-top: 10px;height: 300px;}
+        .timer3{font-size: 25px;color: #0099d2;font-weight: bold;margin-left: 50px;margin-top: 10px;height: 300px;}
+        .timer4{font-size: 30px;color: #a3248f;font-weight: bold;margin-left: 50px;margin-top: 10px;height: 300px;}
+        .timer5{font-size: 35px;color: #a6ce3a;font-weight: bold;margin-left: 50px;margin-top: 10px;height: 300px;}
+        .timer6{font-size: 40px;color: #f00f00;font-weight: bold;margin-left: 50px;margin-top: 10px;height: 300px;}
+    </style>
+<body>
+    <div class="timer timer1">12.12</div>
+    <div class="timer timer2">18362.86</div>
+    <div class="timer timer3">0.36</div>
+    <div class="timer timer4">614.80</div>
+    <div class="timer timer5">11.36</div>
+    <div class="timer timer6">2123655255888.86</div>
+</body>
+<script type="text/javascript">
+    <!--
+    //调用案例，需要在被调用的标签内 写上最终的数值
+    jQuery(function($) {
+        $(".timer").countTo({
+            lastSymbol:" %", //显示在最后的字符
+            from: 0,  // 开始时的数字
+            speed: 2000,  // 总时间
+            refreshInterval:100,  // 刷新一次的时间
+            beforeSize:0, //小数点前最小显示位数，不足的话用0代替 
+            decimals: 2,  // 小数点后的位数，小数做四舍五入
+            onUpdate: function() {
+            },  // 更新时回调函数
+            onComplete: function() {
+                for(i in arguments){
+                    //console.log(arguments[i]);
+                }
+            }
+        });
+    });
+    //-->
+
+    </script>
+</html>

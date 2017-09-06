@@ -1,0 +1,76 @@
+# 移动端图像查看器，包含分页浏览、多选删除、图像截取功能
+(不依赖任何库，兼容主流浏览器)
+
+--------------------------------------
+效果图：
+--------------------------------------
+### 浏览模式
+![](https://github.com/qq597392321/ImageView/blob/master/example/gif/1.gif) 
+### 编辑模式
+![](https://github.com/qq597392321/ImageView/blob/master/example/gif/2.gif) 
+### 裁剪模式
+![](https://github.com/qq597392321/ImageView/blob/master/example/gif/3.gif) 
+
+文档：
+--------------------------------------
+### .show({...}) 
+```javascript
+{
+  pattern:'default',            //模式(默认：default 可选：edit(编辑) clipping(剪裁))
+  selector:'',                  //选择器(如：'#ImageList img')
+  imageMargin:10,               //图片间距(默认：10)
+  isGestureRotate:true,         //手势事件是否能进行旋转(默认：false 可选：true)
+  clippingWidth:[Number],       //裁剪后输出的图片宽度(默认：容器宽度)
+  clippingHeight:[Number],      //裁剪后输出的图片高度(默认：容器宽度)
+  clippingRadius:0,             //裁剪图片的圆角数值(默认：0)
+  clippingBackground:'',        //裁剪后输出的图片背景(默认：透明)
+  clippingImportSuffix:'png'    //裁剪后输出的图片后缀(默认：png 可选：jpge)
+  isFindTargettoImageList:true  //当使用dom事件触发显示时，是否查找目标元素是否存在于图片列表中(默认：true 可选：false)
+}
+```
+### .close()
+`关闭图像查看器`
+
+### .prevPage()
+`(default、edit)模式时，回到到上一张图片`
+
+### .nextPage()
+`(default、edit)模式时，前进到下一张图片`
+
+### .indexPage(index)
+`(default、edit)模式时，前进到指定页码数`
+
+--------------------------------------
+事件：
+--------------------------------------
+### 用法
+```javascript
+/*
+  绑定事件
+  .on(...) 或
+  .addEventListener(...) 或
+  .on+首字母大写事件名，如.onShow=function(){...}
+*/
+ImageView.on('事件名', function (data) {
+  ...
+});
+/*
+  解除事件
+  .off(...) 或
+  .removeEventListener(...)
+*/
+ImageView.off('事件名', function (data) {
+  ...
+});
+```
+### 'show'
+`显示动画完成时触发`
+### 'close'
+`关闭动画完成时触发`
+### 'pageing'
+`进行翻页动作时触发`
+### 'delete'
+`编辑模式时点击删除按钮时触发`
+### 'clipping'
+`剪裁模式时点击完成按钮时触发`
+

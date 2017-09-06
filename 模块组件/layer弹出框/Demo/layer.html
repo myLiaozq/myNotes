@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>开始使用layer</title>
+<link rel="stylesheet" type="text/css" href="layer/skin/layer.css">
+</head>
+
+<body>
+
+<span class="layer">小小提示层</span>
+<button class="layui-btn layui-btn-normal">百搭按钮</button>
+<script src="layer/jquery-1.11.3.js"></script>
+<script src="layer/layer.js"></script>
+<script>
+
+//弹出一个页面层
+$('.layer').on('click', function(){
+  layer.open({
+  type: 2,
+  title :['配置资源', 'font-size:18pt;font-weight:bold;background:#f5f7fa'],
+  area: ['600px', '360px'],
+  shadeClose: true, //点击遮罩关闭
+  content: 'layer/pop.html',
+  success: function(layero, index) {
+     var body = layer.getChildFrame('body', index);
+     console.debug(body);
+     var btns = body.find('.closebtn');
+     $(btns).on('click', function() {
+         layer.closeAll();
+     });
+     console.log(btns);
+	 }
+  });
+});
+
+
+</script>
+</body>
+</html>   

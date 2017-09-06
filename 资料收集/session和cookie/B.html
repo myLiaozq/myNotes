@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>A</title>
+</head>
+<body>
+	sessionStorage: <p id="ss"></p>
+	cookie: <p id="sc"></p>
+	<script type="text/javascript">
+		var ss = sessionStorage.getItem('ss');
+		var sc = document.cookie.split('=')[1];
+		console.log(ss,sc);
+		document.getElementById('ss').innerHTML = ss || '空';
+		document.getElementById('sc').innerHTML = sc || '空';
+	</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>支持移动端的响应式jQuery焦点图插件</title>
+	<link rel="stylesheet" href="css/LM-hiSlider.js.css">
+	<style type="text/css">
+		*{
+		    margin: 0;
+		    padding: 0;
+		}
+		body{
+		    font: 14px/2 'Microsoft YaHei', 'Arial';
+		}
+		li{
+		    list-style: none;
+		}
+	</style>
+	<!--[if IE]>
+		<script src="http://cdn.bootcss.com/html5shiv/r29/html5.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<ul class="hiSlider hiSlider3">
+	    <li class="hiSlider-item"><img src="images/banner01.png" alt="11111"></li>
+	    <li class="hiSlider-item"><img src="images/banner01.png" alt="22222"></li>
+	    <li class="hiSlider-item"><img src="images/banner01.png" alt="33333"></li>
+	</ul>
+	
+	<script src="js/jquery.1.9.1.js"></script>
+	<script src="js/LM-hiSlider.js"></script>
+	<script>
+	    $('.hiSlider3').hiSlider({
+	        isFlexible: true,
+	        isShowTitle: false,
+	        isAuto: true,
+	        isSupportTouch: true,
+	        titleAttr: function(curIdx){
+	            return $('img', this).attr('alt');
+	        }
+	    });
+	</script>
+</body>
+</html>

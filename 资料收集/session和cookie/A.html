@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>A</title>
+</head>
+<body>
+	<h2>注意：必须在服务器下运行</h2>
+	<a href="B.html">B页面</a>
+	<script type="text/javascript">
+		sessionStorage.setItem('ss', 999);
+		document.cookie = 'sc=888';
+		var nd = new Date();     
+		nd.setSeconds(nd.getSeconds() + 60);  
+		console.log(nd.toGMTString());   
+		document.cookie = "cookietest=1; expires=" + nd.toGMTString();     
+		var cookiesEnabled = document.cookie.indexOf("cookietest=") != -1;     
+		if(!cookiesEnabled) {     
+		    //没有启用cookie     
+		    alert("没有启用cookie ");    
+		} else{    
+		    //已经启用cookie     
+		    alert("已经启用cookie ");    
+		}   
+	</script>
+</body>
+</html>

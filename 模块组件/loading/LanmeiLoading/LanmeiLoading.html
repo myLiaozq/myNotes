@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+        p{
+            margin:0;
+            padding:0;
+        }
+        .LanmeiCurrent a {
+            font-size: 20px;
+        }
+        .LanmeiOver {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('gif-bg.jpg') center no-repeat;
+            z-index: 1000;
+        }
+        .LanmeiLayout {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            height: 70px;
+            margin-left: -150px;
+            margin-top: -85px;
+            z-index: 1001;
+            text-align:center;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="LanmeiCurrent"><a href="#">Loading</a></div>
+    <div id="LanmeiOver" class="LanmeiOver"></div>
+    <div id="LanmeiLayout" class="LanmeiLayout"><img src="LanmeLoading.gif" alt="" />
+        <p>Loading......</p>
+    </div>
+    
+    <script type="text/javascript" src="jquery-1.9.1.js"></script>
+    <script type="text/javascript">
+        $('.LanmeiCurrent a').click(function(e){
+            e.preventDefault();
+            LanmeiShowLoading();
+        });
+        function LanmeiShowLoading(){
+            $('#LanmeiOver').show();
+            $('#LanmeiLayout').show();
+        }
+        function LanmeiHideLoading(){
+            $('#LanmeiOver').hide();
+            $('#LanmeiLayout').hide();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+//竖屏时使用的样式
+@media all and (orientation:portrait) {
+.css{}
+}
+
+//横屏时使用的样式
+@media all and (orientation:landscape) {
+.css{}
+}
+
+
+
+		window.addEventListener('orientationchange', function(event){
+		    var w = window.screen.width;
+		    var h = window.screen.height;
+		    
+		    if(w>h){
+		        alert('建议用竖屏查看网站，效果更佳');
+		    }else{
+		        console.log('竖屏');
+		    }
+		    window.location.reload();
+		});
+
+
+
+		window.addEventListener('orientationchange', function(event){
+			console.log(window);
+		    if ( window.orientation == 180 || window.orientation==0 ) {
+		        alert("竖屏");
+		    }
+		    if( window.orientation == 90 || window.orientation == -90 ) {
+		        alert("横屏");
+		    }
+		});

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding:0;margin:0;
+        }
+        #header{
+            width:100%;
+            height:160px;
+            background: url('header.jpg') no-repeat;
+        }
+        #piclist{
+            height:370px;
+            margin-top:20px;
+        }
+        #piclist ul li{
+            list-style:none;
+            width:220px;
+            height:300px;
+            float:left;
+            margin:10px;
+            border:5px solid #fff;
+            box-shadow: 1px 1px 2px #8f8f8f;
+            text-align: center;
+            position: relative;
+        }
+        #piclist ul li .tittle{
+            font-size:12px;
+            text-align: center;
+        }
+        #piclist ul li span{
+            color:#C00;
+            font-size:30px;
+            font-family: 'Microsoft Yahei';
+            margin-top:10px;
+            position: absolute;
+            left:0px;
+            bottom:5px;
+        }
+        #piclist ul li button{
+            background: #c00;
+            color:#fff;
+            border:none;
+            border-radius: 5px;
+            height:30px;
+            width:100px;
+            position: absolute;
+            right:0px;
+            bottom:5px;
+        }
+        #gwc{
+            height:500px;
+            position: fixed;
+            right:-220px;
+            top:0px;
+        }
+        .car{
+            width:40px;
+            height: 100%;
+            background: #000;
+            float:left;
+        }
+        .car span{
+            display: block;
+            color:#fff;
+            width:12px;
+            font-size:12px;
+            background: #c00;
+            padding:14px;
+            text-align: center;
+            margin-top:200px;
+            cursor:pointer;
+        }
+        .box{
+            width:220px;
+            height: 100%;
+            background: #bebebe;
+            float:right;
+        }
+        .box .content{
+            height:100px;
+            border-bottom:1px solid #fff;
+            padding:10px;
+        }
+        .box .content img,.box .content span{
+            float:left;
+        }
+        .box .content img{
+        }
+        .box .content span{
+            margin-left:5px;
+            font-size:12px;
+            line-height: 50px;
+        }
+        .box .content p{
+            width:100%;
+            color:#c00;
+            font-size:20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+
+    <div id="piclist">
+        <ul>
+            <li>
+                <img src="1.jpg" alt="">
+                <p class="tittle">only秋冬棉质拼接休闲裤</p>
+                <span>$199</span><button>立即购买</button>
+            </li>
+            <li>
+                <img src="2.jpg" alt="">
+                <p class="tittle">only秋冬棉质拼接休闲裤</p>
+                <span>$199</span><button>立即购买</button>
+            </li>
+            <li>
+                <img src="3.jpg" alt="">
+                <p class="tittle">only秋冬棉质拼接休闲裤</p>
+                <span>$199</span><button>立即购买</button>
+            </li>
+            <li>
+                <img src="4.jpg" alt="">
+                <p class="tittle">only秋冬棉质拼接休闲裤</p>
+                <span>$199</span><button>立即购买</button>
+            </li>
+        </ul>
+    </div>
+
+    <div id="gwc">
+        <div class="car">
+            <span>购物车</span>
+        </div>
+        <div class="box">
+            <div class="content">
+                <img src="1.jpg" width="50" alt="">
+                <span>only秋冬棉质拼接休闲裤</span>
+                <p>$199</p>
+            </div>
+        </div>
+    </div>
+    <script src="jquery.js"></script>
+    <script src="tz_fly.js"></script>
+    <script>
+
+        //开关购物车
+        $('.car span').click(function () {
+            if($('#gwc').css('right')=="-220px"){
+                $('#gwc').animate({right:0},500)
+            }else{
+                $('#gwc').animate({right:"-220px"},500)
+            }
+        });
+
+        $('#piclist ul li button').click(function(){
+            var imgsrc=$(this).siblings('img').attr('src');
+            var txt=$(this).siblings('.tittle').text();
+            var price=$(this).siblings('span').text();
+            console.log(imgsrc)
+            $('.box .content').append('<img src='+imgsrc+' width="50" alt=""><span>'+txt+'</span><p>'+price+'</p>');
+            add(event);
+        });
+
+        function add(event) {
+            var offset=$('.car span').offset(); //落脚点
+            var _this=$(event.target);
+            var imgsrc1=_this.siblings('img').attr('src');
+            var flyer=$('<img src="'+imgsrc1+'" width=50 style="border-radius:50%"/>');
+            console.log(offset,_this,imgsrc1,flyer);
+            //利用插件
+            flyer.fly({
+                start:{left:event.clientX,top:event.clientY},//鼠标当时所在的位置
+                end:{left:offset.left+10,top:offset.top+10,width:20,height:20},//落脚点及落脚时的尺寸
+                onEnd:function(){//落脚时的动画效果，及后期处理方式
+                    flyer.fadeOut("slow",function(){
+                        $(this).remove();
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>

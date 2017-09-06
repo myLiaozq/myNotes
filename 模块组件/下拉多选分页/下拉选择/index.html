@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>select</title>
+</head>
+<style type="text/css">
+	*{
+		box-sizing: border-box;
+	}
+	.sewv {
+	  position: relative;
+	  width: 200px;
+	  display: inline-block;
+	  margin-left: 20px;
+	}
+	.sewv .sewvtop {
+	  width: 100%;
+	  border: none;
+	  padding: 2px 33px 2px 10px;
+	  background-color: #12406D;
+	  cursor: pointer;
+	  border-radius: 2px;
+	  display: inline-block;
+	  border: 1px transparent solid;
+	}
+	.sewv .sewvtop:hover {
+	  border: 1px #57c5f7 solid;
+	}
+	.sewv .sewvtop > span {
+	  display: inline-block;
+	  width: 100px;
+	  height: 23px;
+	  white-space: pre;
+	  text-overflow: ellipsis;
+	  overflow: hidden;
+	  font-size: 12px;
+	  line-height: 22px;
+	  color: #A9A9A9;
+	  vertical-align: middle;
+	}
+	.sewv .sewvtop > em {
+	  display: inline-block;
+	  width: 20px;
+	  height: 20px;
+	  vertical-align: middle;
+	  position: absolute;
+	  right: 10px;
+	}
+	.sewv .sewvbm {
+	  width: 100%;
+	  position: absolute;
+	  left: 0;
+	  top: 29px;
+	  display: none;
+	  border: 1px #009688 solid;
+	  border-radius: 2px;
+	  background: #12406d;
+	  z-index: 999;
+	  padding: 0;
+	  margin: 0;
+	  max-height: 200px;
+	  overflow-x: hidden;
+	  overflow-y: auto;
+	}
+	.sewv .sewvbm > li {
+	  cursor: pointer;
+	  width: 100%;
+	  height: 23px;
+	  line-height: 20px;
+	  font-size: 14px;
+	  color: #A9A9A9;
+	  padding: 2px 10px;
+	  overflow: hidden;
+	}
+	.sewv .sewvbm > li:hover {
+	  background: #3ec66c;
+	  color: #fff;
+	}
+	.sewv .lbaxztop {
+	  animation: rotatete 0.3s linear forwards;
+	}
+	.sewv .lbaxztop2 {
+	  animation: rotatete2 0.3s linear forwards;
+	}
+	@keyframes rotatete {
+	  from {
+	    transform: rotate(0deg);
+	  }
+	  to {
+	    transform: rotate(180deg);
+	  }
+	}
+	@keyframes rotatete {
+	  from {
+	    transform: rotate(0deg);
+	  }
+	  to {
+	    transform: rotate(180deg);
+	  }
+	}
+	@-moz-keyframes rotatete2 {
+	  from {
+	    transform: rotate(180deg);
+	  }
+	  to {
+	    transform: rotate(0deg);
+	  }
+	}
+	@keyframes rotatete2 {
+	  from {
+	    transform: rotate(180deg);
+	  }
+	  to {
+	    transform: rotate(0deg);
+	  }
+	}
+</style>
+<body>
+	<!-- 推荐路线 -->
+	<div id="driving_way" class="sewv">
+		<div class="sewvtop driving_way_title">
+			<span>驾驶方式</span><em><img src="./images/selebom.png"></em>
+		</div>
+         <ul class="sewvbm driving_way_bm">
+         	<li data-val="0">最少时间</li>
+         	<li data-val="1">最短距离</li>
+         	<li data-val="2">避开高速</li>
+         </ul>	
+	</div>
+	<!-- 货车类型 -->
+	<div class="sewv">
+		<div class="sewvtop carType">
+			<span>货车类型</span><em><img src="./images/selebom.png"></em>
+		</div>
+         <ul class="sewvbm sewvbmCar">
+         	
+         </ul>			
+	</div>
+
+	<script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+	<script type="text/javascript">
+		/* 获取货车数据 */
+		$.ajax({
+		    type:"POST",
+		    url:"../data/data1.json",
+		    data:"",
+		    success:function(data){
+		        $.each(data.data,function(idx,val){
+		            $('.sewvbmCar').append('<li>'+val+'</li>');
+		        });
+		        $(".carType").selectContent({sewvtop:"carType",sewvbm:"sewvbmCar"});
+		    },
+		    error:function(){
+		        console.log('没有获取数据');
+		    }
+		});
+
+		/* 定义下拉框插件 */
+		$.fn.selectContent=function(option){
+		    var sewvtop = option.sewvtop;
+		    var sewvbm = option.sewvbm;
+		    $(this).unbind().click(function(e){
+		        e.stopPropagation();//阻止冒泡
+		        $("."+sewvbm).slideToggle(150);
+		        if($(this).find("em").hasClass("lbaxztop")){
+		            $(this).find("em").addClass("lbaxztop2");
+		            $(this).find("em").removeClass("lbaxztop");
+		        }else{
+		            $(this).find("em").addClass("lbaxztop");
+		            $(this).find("em").removeClass("lbaxztop2");
+		        }
+		    });
+
+		    $("."+sewvbm+">li").unbind().click(function(){
+		        var selva=$(this).text();
+		        $("."+sewvtop+">span").text(selva);
+		        $(this).parent("ul").hide();
+		        
+		        if($(this).parents(".sewv").find("em").hasClass("lbaxztop")){
+		            $(this).parents(".sewv").find("em").addClass("lbaxztop2");
+		            $(this).parents(".sewv").find("em").removeClass("lbaxztop");
+		        }else{
+		            $(this).parents(".sewv").find("em").addClass("lbaxztop");
+		            $(this).parents(".sewv").find("em").removeClass("lbaxztop2");
+		        }
+		    });
+
+		    $('html').click(function(e){
+		        $('.'+sewvbm).hide();
+		    });
+		};
+
+		$(".driving_way_title").selectContent({sewvtop:"driving_way_title",sewvbm:"driving_way_bm"});
+	</script>
+</body>
+</html>

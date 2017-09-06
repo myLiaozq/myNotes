@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>promise</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var fn = function() {
+		    return new Promise(function(resolve, reject) {
+		        
+		            resolve();
+		       console.log(1);
+		            
+		       
+		    });
+		};
+
+		fn().then(function(num) {
+		    console.log('first:2 ');
+		    // return num + 1;
+		})
+		.then(function(num) {
+		    console.log('second: 3' );
+		    // return num + 1;
+		})
+		.then(function(num) {
+		    console.log('third: 4' );
+		    // return num + 1;
+		});
+
+		// console.log('---------------------');
+
+		// 输出结果
+		// first: 2
+		// second: 3
+		// third: 4
+		
+
+		// function fn2(num) {
+		//     return new Promise(function(resolve, reject) {
+		//         if (typeof num == 'number') {
+		//             resolve();
+		//         } else {
+		//             reject();
+		//         }
+		//     }).then(function() {
+		//         console.log('参数是一个number值');
+		//     }, function() {
+		//         console.log('参数不是一个number值');
+		//     });
+		// }
+
+		// fn2('hahha');
+		// fn2(1234);
+
+
+		// var p1 = new Promise(function (resolve) {
+		//     setTimeout(function () {
+		//         resolve("Hello");
+		//     }, 3000);
+		// });
+
+		// var p2 = new Promise(function (resolve) {
+		//     setTimeout(function () {
+		//         resolve("World");
+		//     }, 1000);
+		// });
+
+		// Promise.all([p1, p2]).then(function (result) {
+		//     console.log(result); // ["Hello", "World"]  上面的例子模拟了传输两个数据需要不同的时长，虽然 p2 的速度比 p1 要快，但是 Promise.all 方法会按照数组里面的顺序将结果返回。
+		// });
+	</script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>2017.7.18 js鼠标从各方向滑入滑出效果</title>
+	<meta name="Keywords" content="关键词,关键词" />
+    <meta name="Description" content="描述" />
+    <style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		li{
+			list-style:none;
+		}
+		#box{
+			width:1250px;
+			height:360px;
+			margin:100px auto;
+			background:pink;
+			font-family:"Microsoft yahei";
+		}
+		#box ul li{
+			float:left;
+			position:relative;
+			width:230px;
+			height:360px;
+			margin:0 10px;
+			overflow:hidden;
+		}
+		#box ul li img{
+			display:block;
+			border:0;
+		}
+		#box ul li a{
+			position:absolute;
+			top:360px;
+			left:0;
+			width:100%;
+			height:100%;
+			/*background:url("images/new-bg.png");*/
+			background:rgba(0,0,0,0.5);
+			text-decoration:none;
+		}
+		#box ul li a p{
+			/* margin:60px 10px; */
+			text-align:center;
+			font-size:14px;
+			color:#fff;
+		}
+		#box ul li a p.p1{
+			padding-top:160px;
+		}
+    </style>
+</head>
+<body>
+	<!-- 商品展示栏 开始-->
+	<div id="box">
+		<ul>
+			<li>
+				<img src="images/1.jpg" alt="">
+				<a href="">
+					<p class="p1">秋冬上新 领券立减20</p>
+					<p>点击进入</p>
+				</a>
+			</li>
+			<li>
+				<img src="images/2.jpg" alt="">
+				<a href="">
+					<p class="p1">钜惠满138减15</p>
+					<p>点击进入</p>
+				</a>
+			</li>
+			<li>
+				<img src="images/3.jpg" alt="">
+				<a href="">
+					<p class="p1">冬装精品 强势登陆</p>
+					<p>点击进入</p>
+				</a>
+			</li>
+			<li>
+				<img src="images/4.jpg" alt="">
+				<a href="">
+					<p class="p1">十一国庆出游季</p>
+					<p>购新衣才够【型】</p>
+				</a>
+			</li>
+			<li>
+				<img src="images/5.jpg" alt="">
+				<a href="">
+					<p class="p1">秋上新</p>
+					<p>点击进入</p>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<!-- 商品展示栏 结束-->
+	<script type="text/javascript">
+		/*
+			1.鼠标移入控制a的位置以及方向的变化
+			2.怎么判断鼠标移入的位置(鼠标和li的上下左右的关系)！！！！！！！
+				a.获取鼠标移入的值
+				b.比较鼠标刚进入时的点距离li四边哪个最近
+				c.
+			3.把a移动到相应的位置
+		 */
+		 
+		var box=document.getElementById("box");
+		var li=box.getElementsByTagName("li");
+		for(var i=0;i<li.length;i++){
+			li[i].onmouseenter=function(e){
+				var e=e||event;
+				var x=e.pageX;
+				var y=e.pageY;
+
+				// console.log("x:"+x,"y:"+y);
+
+				var left=this.offsetLeft;
+				var top=this.offsetTop;
+				var right=left+this.offsetWidth;
+				var bottom=top+this.offsetHeight;
+
+				// console.log("left:"+left,"right:"+right,"top:"+top,"bottom:"+bottom);
+
+				var sT=Math.abs(y-top);  //鼠标距离顶部距离的绝对值
+				var sB=Math.abs(y-bottom); //鼠标距离底部距离的绝对值
+				var sL=Math.abs(x-left); //鼠标距离左边距离的绝对值
+				var sR=Math.abs(x-right); //鼠标距离右边距离的绝对值
+				var a=Math.min(sT,sB,sL,sR);
+
+				// console.log(x-right);
+				// console.log(sT,sB,sL,sR,a);
+
+				var oA=this.getElementsByTagName("a")[0];
+
+				switch(a){
+					case sT:
+						oA.style.cssText+=";top:-360px;left:0";
+						setTimeout(function(){
+							oA.style.cssText+=";top:0;transition:0.3s;";
+						},1);
+						break;						
+					case sB:
+						oA.style.cssText+=";top:360px;left:0";
+						setTimeout(function(){
+							oA.style.cssText+=";top:0;transition:0.3s;";
+						},1);
+						break;
+					case sL:
+						oA.style.cssText+=";left:-230px;top:0";
+						setTimeout(function(){
+							oA.style.cssText+=";left:0;transition:0.3s;";
+						},1);
+						break;
+					case sR:
+						oA.style.cssText+=";left:230px;top:0";
+						setTimeout(function(){
+							oA.style.cssText+=";left:0;transition:0.3s;";
+						},1);
+						break;
+				}
+			}
+			li[i].onmouseleave=function(){
+				var e=e||event;
+				var x=e.pageX;
+				var y=e.pageY;
+				var left=this.offsetLeft;
+				var top=this.offsetTop;
+				var right=left+this.offsetWidth;
+				var bottom=top+this.offsetHeight;
+				//console.log(right);
+				var sT=Math.abs(y-top);
+				var sB=Math.abs(y-bottom);
+				var sL=Math.abs(x-left);
+				var sR=Math.abs(x-right);
+				var a=Math.min(sT,sB,sL,sR);
+
+				var oA=this.getElementsByTagName("a")[0];
+				switch(a){
+					case sT:
+						oA.style.cssText+=";top:-360px;";
+						break;						
+					case sB:
+						oA.style.cssText+=";top:360px;";
+						break;
+					case sL:
+						oA.style.cssText+=";left:-230px;";
+						break;
+					case sR:
+						oA.style.cssText+=";left:230px;";
+						break;
+				}
+			}
+		}
+	</script>
+</body>
+</html>

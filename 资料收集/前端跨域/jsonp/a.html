@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jsonp</title>
+</head>
+<body>
+	<!-- 方式一 -->
+	<script type="text/javascript">
+	    function dosomething(jsondata){
+	        //处理获得的json数据
+	        console.log(jsondata);
+	    }
+	</script>
+	<script src="data.php?callback=dosomething"></script>
+
+	<!-- 方式二 -->
+	<!-- <script type="text/javascript" src="../domain/jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+	    $.getJSON('data.php?callback=dosomething');
+	 
+	    function dosomething(jsondata){
+	        //处理获得的json数据
+	        console.log(jsondata);
+	    }
+	</script> -->
+</body>
+</html>

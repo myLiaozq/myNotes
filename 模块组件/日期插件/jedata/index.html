@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>date</title>
+	<link rel="stylesheet" type="text/css" href="jedate/skin/jedate.css">
+</head>
+<body>
+	<!-- 任意时间 -->
+	<div class="otherTime">
+		<input type="text" class="workinput wicon wstartTime" id="inpstart" readonly> 
+		<span class="wstxt">~</span>
+		<input type="text" class="workinput wicon wendTime" id="inpend" readonly>
+		<input type="text" id="test" readonly>
+	</div>
+	<script type="text/javascript" src="jquery-1.9.1.js"></script>
+	<script type="text/javascript" src="jedate/jquery.jedate.js"></script>
+	<script type="text/javascript">
+		/* 时间选择 */
+		// 任意时间
+		var selectTime = {
+			start : {
+				format: 'YYYY-MM-DD',
+		        minDate: '2014-06-16', //设定最小日期为当前日期
+		        festival:false,
+		        zIndex:2099,
+		        // isinitVal:true,
+		        maxDate: $.nowDate(0), //最大日期
+		        choosefun: function(elem,datas){
+		            selectTime.end.minDate = datas; //开始日选好后，重置结束日的最小日期
+		        }
+		    },
+
+		    end : {
+		    	format: 'YYYY-MM-DD',
+		        minDate: $.nowDate(0), //设定最小日期为当前日期
+		        festival:false,
+		        zIndex:2099,
+		        // isinitVal:true,
+		        maxDate: '2099-06-16', //最大日期
+		        choosefun: function(elem,datas){
+		            selectTime.start.maxDate = datas; //将结束日的初始值设定为开始日的最大日期
+		        }
+		    }
+
+		};
+		$("#test").jeDate({
+			format:"YYYY-MM-DD hh:mm:ss",
+			isTime:true, 
+			minDate:"2014-09-19 00:00:00"
+		});
+
+		$("#inpstart").jeDate(selectTime.start);
+		$("#inpend").jeDate(selectTime.end);
+	</script>
+</body>
+</html>

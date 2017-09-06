@@ -1,0 +1,101 @@
+﻿<!DOCTYPE HTML>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" /> 
+<meta content="black" name="apple-mobile-web-app-status-bar-style" /> 
+<meta content="telephone=no" name="format-detection" />
+<head>
+	<title>html5酒店预订日期选择手机日历 - 站长素材</title>
+	<link rel="stylesheet" type="text/css" href="lm-dateRange.css"/>
+	<style type="text/css">
+		.p-radioSelect,#div_date1{
+			margin-top: 100px;
+			margin-left: 100px;
+		}
+		#div_date1{
+			margin-top: 20px;
+		}
+		.p-radioSelect label{
+			position: relative;
+			margin-right: 50px;
+		}
+		.p-radioSelect label i{
+			display: inline-block;
+			width: 16px;
+			height: 16px;
+			border-radius: 50%;
+			border: 1px solid #1f2c5c;
+			margin-right: 10px;
+			vertical-align: text-bottom;
+		}
+		.p-radioSelect label i.active{
+			border-color: #8ec060;
+			background: #8ec060;
+		}
+		.p-radioSelect label span{
+			font-size: 14px;
+			color: #1f2c5c;
+			text-align: left;
+		}
+		
+	</style>
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" src="lm-dateRange.js"></script>
+</head>
+
+<body>
+	<div class="p-radioSelect">
+		<label><i class="active"></i><span data-way="oneWay">One - way</span></label>
+		<label><i></i><span data-way="roundTrip">Round Trip</span></label>
+		<label><i></i><span data-way="multi">Stopover / Multi - city</span></label>
+	</div>
+	<div class="ta_date" id="div_date1">
+		<input type="text" name="" value="" id="p-date-start" readonly="">
+		<input type="text" name="" value="" id="p-date-end" readonly="" disabled="disabled">
+	</div>
+	<script type="text/javascript">
+
+	// 单程 往返切换
+	$('.p-radioSelect label').click(function(){
+		$(this).children('i').addClass('active');
+		$(this).siblings('label').children('i').removeClass('active');
+	});
+
+	// 日期选择
+	var formatDate = function(ymd) { //日期格式化
+		return ymd.replace(/(\d{4})\-(\d{1,2})\-(\d{1,2})/g, function(ymdFormatDate, y, m, d){
+			m < 10 && (m = '0' + m);
+			d < 10 && (d = '0' + d);
+			return y + '-' + m + '-' + d;
+		});
+	};
+
+	var today  = new Date();
+	var startTime = formatDate(today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()); 
+	var endTimeStr = new Date(today.getTime()+86400000*2); 
+	var endTime = formatDate(endTimeStr.getFullYear()+'-'+(endTimeStr.getMonth()+1)+'-'+(endTimeStr.getDate()));
+	var maxTime = formatDate(today.getFullYear()+'-'+(today.getMonth()+13)+'-'+(today.getDate()+2)); 
+	
+	var dateRange1 = new pickerDateRange('p-date-start', {
+		canID:'data1',
+		startDate: startTime,
+		endDate: endTime,
+		maxTime: maxTime,
+		defaultText : ' ~ ',
+		autoSubmit : false,
+		stopToday : true,
+		theme : 'ta',
+		calendars : 13, // 展示的月份数
+		isSingleDay : true,
+		shortOpr : true,
+		nextShow:false,
+		prevShow:false,
+		endId:'p-date-end',
+		device:'pad',
+	});
+	
+
+</script>
+</body>
+</html>

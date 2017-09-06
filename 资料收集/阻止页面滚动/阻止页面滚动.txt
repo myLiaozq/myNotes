@@ -1,0 +1,11 @@
+css代码：
+.ovfHiden{overflow: hidden;height: 100%;}
+
+$(".header_right").click(function(){
+   $('html,body').addClass('ovfHiden'); //使网页不可滚动
+   $(".searchbox").show();
+ })
+ $(".yg-close").click(function(){
+   $('html,body').removeClass('ovfHiden'); //使网页恢复可滚
+   $(".searchbox").hide();
+ })

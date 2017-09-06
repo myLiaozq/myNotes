@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!--第一步：引入Javascript / CSS （CDN）-->
+    <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="js/jquery.dataTables.js"></script>
+</head>
+<body>
+	<table id="table" class="display" cellspacing="0" width="100%">
+	<button id="btn">添加表格</button>
+	<script type="text/javascript">
+		var table;
+		function load_table(){
+
+		    table = $('#table').DataTable({
+		        "info": false,
+		        "lengthChange": true,
+		        "lengthMenu": [[10, 15, 25, 50, 100,500], [10, 15,25, 50,100,500]],
+		        "dom": 'it<"mypage"p><"mylength"l><"clearfix">',
+		        "serverSide": true,
+		        "searching": false,
+		        "ordering": false,
+		        "scrollX": true,
+		        "pageLength": 10,
+		        "language": {
+		            "lengthMenu": "每页显示 _MENU_ 条",
+		            "sInfo": "共 _TOTAL_ 条记录,当前是第 _START_ - _END_ 条 ",
+		            "sEmptyTable": "没有数据",
+		            "sInfoEmpty": "没有数据",
+		            "sZeroRecords": "暂无数据",
+		            "paginate": {
+		                "previous": "上一页",
+		                "next": "下一页"
+		            }
+		        },
+		        "ajax": {
+		            "url" : 'data/data6.json',
+		            "type": "POST",
+		            "cache": true,
+		            "data": {
+		                "username" : $('#search_username_multiple').val(),
+		                "warningstyle" : $('#search_warningStyle_multiple').val()
+		            },
+		            "dataSrc": function (json) {
+		            	console.log(json);
+		                $.each(json.data, function (i, e) {
+		                    var id = e.id;
+		                    e.id_checkbox = '<input type="checkbox" class="subcheck" value="' + id + '" />';
+		                });
+		                return json.data;
+		            }
+		        },
+		        "columns":[
+		            {"data": "id_checkbox","title":'<input type="checkbox" class="checkall" id="checkall" />',"width":"30"},
+		            {"data": "id","title":'告警屏蔽ID',"width":"10%"},
+		            {"data":'username',"title":'用户名',"width":"10%"},
+		            {"data":'warningstyleid',"title":'告警类型ID',"width":"10%",'visible':false},
+		            {"data":'warningstyle',"title":'告警类型',"width":"20%"},
+		            {"data":'islimit',"title":'是否屏蔽',"width":"10%"},
+		            {"data":'remark',"title":'备注',"width":"20%"},
+		            {"data":'lasttime',"title":'更新时间',"width":"20%"}
+		        ]
+		    });
+
+		    // table.on('length.dt', function ( e, settings, len ) {
+		    //     pageSize = len;
+		    // });
+
+		    // table.off('preXhr.dt').on('preXhr.dt', function() {
+		    //     $('#loadingDiv').Loading({ info: '' }); //加载前打开Loading...
+		    // });
+
+		    // //加载完关闭loading...
+		    // table.off('xhr.dt').on('xhr.dt', function() {
+		    //     $('#loadingDiv').Loading({ isShow: false });
+		    // });
+
+		    // table.on('draw.dt',function(){
+		    //     $('[data-toggle="tooltip"]').tooltip({
+		    //         viewport:{ selector: 'body', padding: 0 },
+		    //         container:'body'
+		    //     });
+		    //     bindCheckAll('checkall');
+		    // });
+		}
+
+		load_table();
+
+		$('#btn').click(function(){
+			if(table){
+			    table.clear(true);
+			    table.destroy();
+			}
+			load_table();
+		});
+	</script>
+</body>
+</html>
